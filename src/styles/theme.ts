@@ -16,7 +16,7 @@ const color = {
   navy: "#45537c",
   gray: "#B3B6C4",
   purple: "#a77afe",
-  lightPuple:"#dcc8fa",
+  lightPurple:"#dcc8fa",
   skyblue:"#58bafe",
   white: "#ffffff",
   black: "#181818"
