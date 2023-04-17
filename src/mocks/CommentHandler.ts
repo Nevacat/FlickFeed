@@ -3,7 +3,7 @@ import { Posts } from './constants/PostsData';
 
 export const CommentHandler = [
   // 댓글 작성
-  rest.post('/comments', async (req, res, ctx) => {
+  rest.post('/comment', async (req, res, ctx) => {
     const body = await req.json();
     const {postId, content} = body
     const user = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -23,7 +23,7 @@ export const CommentHandler = [
   }),
   
   // 댓글 수정
-  rest.put("/comments/:id", async (req, res, ctx) => {
+  rest.put("/comment/:id", async (req, res, ctx) => {
     const commentId = req.params.id
     const { content, postId } = await req.json();
     const user = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -44,7 +44,7 @@ export const CommentHandler = [
   }),
 
   //댓글 삭제
-  rest.delete("/comments/:id", async (req, res, ctx) => {
+  rest.delete("/comment/:id", async (req, res, ctx) => {
     const { postId } = await req.json();
     const commentId = req.params.id
     const user = JSON.parse(sessionStorage.getItem('user') || '{}');

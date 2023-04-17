@@ -73,7 +73,7 @@ export const UserHanlder = [
   }),
   
   //유저 정보 변경
-  rest.put("/user", async (req, res, ctx) => {
+  rest.put("/users", async (req, res, ctx) => {
     const getToken = req.headers.get("Authorization")?.replace("Bearer ", "");
     if (token !== getToken) {
       return res(ctx.status(401), ctx.json({ message: "Unauthorized" }));
