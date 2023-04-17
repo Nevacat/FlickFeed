@@ -4,6 +4,15 @@ import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyled } from './styles/globalStyle';
 import Routers from './routes/routes';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   // const testPost = async () => {
@@ -17,12 +26,15 @@ function App() {
   // useEffect(() => {
   //   testPost();
   // }, []);
+
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyled />
-      <Routers />
-    </ThemeProvider>
-  )
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyled />
+        <Routers />
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App;
