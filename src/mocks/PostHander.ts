@@ -18,7 +18,7 @@ export const PostHandler = [
   }),
 
   // 게시글 등록
-  rest.post('/post', async (req, res, ctx) => {
+  rest.post('/posts', async (req, res, ctx) => {
     const body = await req.json();
     if (!req.headers.get('Authorization')) {
       return res(ctx.status(401), ctx.json('forbidden'));
