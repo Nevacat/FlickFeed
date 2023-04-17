@@ -1,9 +1,13 @@
-import React from 'react'
-import * as S from './style'
+import React from 'react';
+import * as S from './style';
+import { Outlet } from 'react-router-dom';
 function Layout() {
   return (
-    <S.Layout>Layout</S.Layout>
-  )
+    <S.Layout>
+      Layout
+      <Outlet />
+    </S.Layout>
+  );
 }
 
-export default Layout
+export default Layout;

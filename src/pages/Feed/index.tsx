@@ -1,9 +1,13 @@
-import React from 'react'
-
+import React from 'react';
+import UsersWrap from '../../components/Feed/UsersWrap';
+import PostList from '../../components/Feed/PostList';
 function Feed() {
   return (
-    <div>Feed</div>
-  )
+    <div>
+      <UsersWrap />
+      <PostList />
+    </div>
+  );
 }
 
-export default Feed
+export default Feed;
