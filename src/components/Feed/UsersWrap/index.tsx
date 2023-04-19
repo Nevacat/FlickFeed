@@ -16,10 +16,10 @@ function UsersWrap() {
   }
   return (
     <S.UsersWrap>
-      <MultiCarousel autoPlay infinite>
+      <MultiCarousel infinite swipeable arrows={false}>
         {users.Users.map((user: any) => (
-          <div key={user.id} style={{ textAlign: 'center' }}>
-            <User user={user} />
+          <div key={user.id}>
+            <User user={user} avatarSize='big' />
             <h1> {user.username}</h1>
           </div>
         ))}
