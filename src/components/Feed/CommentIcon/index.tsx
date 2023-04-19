@@ -1,17 +1,10 @@
 import React from 'react';
-import { FaRegComment } from 'react-icons/fa';
-import styled from 'styled-components';
+import * as S from './style';
+
 function CommentIcon() {
-  return (
-    <div>
-      <StyledCommentIcon />
-    </div>
-  );
+  // 수정버튼 누르면 게시물 등록 페이지로 넘어감...
+
+  return <S.CommentIcon />;
 }
 
 export default CommentIcon;
-
-const StyledCommentIcon = styled(FaRegComment)`
-  width: 20px;
-  height: 20px;
-`;
