@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-export const UsersWrap = styled.div`
-  height: 80px;
-  overflow: hidden;
-`;
+export const UsersWrap = styled.div``;
+
+// display: flex 금지!!!
