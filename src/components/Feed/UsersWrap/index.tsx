@@ -1,17 +1,29 @@
 import React, { useState, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import User from '../User';
-import UserImg from '../UserImg';
 import * as S from './style';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import MultiCarousel from '../../MultiCarousel';
+
 function UsersWrap() {
-  const [swiper, setSwiper] = useState(null);
-  const initSwiper = useRef();
+  const getUsers = async () => {
+    const res = await axios.get('/users');
+    return res.data;
+  };
+  const { isLoading, data: users, error } = useQuery('users', getUsers);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <S.UsersWrap>
-      <div className='swiper-container' ref={initSwiper}>
-        <User />
-      </div>
+      <MultiCarousel autoPlay infinite>
+        {users.Users.map((user: any) => (
+          <div key={user.id} style={{ textAlign: 'center' }}>
+            <User user={user} />
+            <h1> {user.username}</h1>
+          </div>
+        ))}
+      </MultiCarousel>{' '}
     </S.UsersWrap>
   );
 }
