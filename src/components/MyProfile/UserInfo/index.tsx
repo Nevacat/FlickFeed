@@ -3,7 +3,7 @@ import * as S from './style';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-function index() {
+function index({ isModalOpen, setIsModalOpen }: any) {
   const getUser = async () => {
     const response = await axios({
       method: 'POST',
@@ -36,7 +36,9 @@ function index() {
       <S.Name>{user?.username}</S.Name>
       <S.StatusMessage>{user?.userInfo}</S.StatusMessage>
 
-      <S.EditButton type="button">프로필 편집</S.EditButton>
+      <S.EditButton type="button" onClick={() => setIsModalOpen(!isModalOpen)}>
+        프로필 편집
+      </S.EditButton>
     </S.UserInfo>
   );
 }
