@@ -20,7 +20,7 @@ function MultiCarousel({ children, ...props }: MultiCarouselProps) {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 5,
       partialVisibilityGutter: 30, // this is needed to tell the amount of px that should be visible.
     },
   };
