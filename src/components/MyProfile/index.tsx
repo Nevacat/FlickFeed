@@ -1,4 +1,4 @@
-import Header from './Header';
+import Header from '../Common/Header';
 import Background from './Background';
 import UserInfo from './UserInfo';
 import Modal from './Modal';

@@ -33,7 +33,6 @@ function MyProfile() {
 
   return (
     <main style={{ position: 'relative' }}>
-      <Header />
       <Background />
       <UserInfo isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <Modal
