@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import {
-  Background,
-  UserInfo,
-  CardList,
-  Header,
-  Modal,
-} from '../../components/MyProfile/';
+import React from 'react';
+import * as S from './style';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-function MyProfile() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+function index({ isModalOpen, setIsModalOpen }: any) {
   const getUser = async () => {
     const response = await axios({
       method: 'POST',
@@ -32,17 +24,23 @@ function MyProfile() {
   });
 
   return (
-    <main style={{ position: 'relative' }}>
-      <Background />
-      <UserInfo isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <Modal
-        user={user}
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
-      <CardList />
-    </main>
+    <S.UserInfo>
+      <S.Image>
+        <img
+          src={
+            user?.userImage ? user?.userImage : 'images/profile_background.jpg'
+          }
+          alt={user?.username}
+        />
+      </S.Image>
+      <S.Name>{user?.username}</S.Name>
+      <S.StatusMessage>{user?.userInfo}</S.StatusMessage>
+
+      <S.EditButton type="button" onClick={() => setIsModalOpen(!isModalOpen)}>
+        프로필 편집
+      </S.EditButton>
+    </S.UserInfo>
   );
 }
 
-export default MyProfile;
+export default index;
