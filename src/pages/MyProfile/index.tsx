@@ -4,7 +4,7 @@ import {
   UserInfo,
   CardList,
   Header,
-  Modal,
+  UserInfoModal,
 } from '../../components/MyProfile/';
 import axios from 'axios';
 import { useQuery } from 'react-query';
@@ -35,7 +35,7 @@ function MyProfile() {
     <main style={{ position: 'relative' }}>
       <Background />
       <UserInfo isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <Modal
+      <UserInfoModal
         user={user}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
