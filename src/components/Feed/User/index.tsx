@@ -3,16 +3,16 @@ import * as S from './style';
 import UserImg from '../UserImg';
 import { useQuery } from 'react-query';
 
-function User() {
-  const { isLoading, data, error } = useQuery();
+function User({ user, avatarSize }: any) {
   return (
     <S.User>
-      <div key={User.id} style={{ margin: ' 10px' }}>
-        <UserImg />
-        <h3 style={{ display: 'flex', justifyContent: 'center' }}>
+      <div key={user.id}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           {' '}
-          {User.username}{' '}
-        </h3>
+          <UserImg size={avatarSize} />{' '}
+        </div>
+
+        <h3 style={{ display: 'flex', justifyContent: 'center' }}></h3>
       </div>
     </S.User>
   );
