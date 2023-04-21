@@ -1,22 +1,30 @@
 import React from 'react';
-// import styled from 'styled-components';
-// import { AiOutlineHeart } from 'react-icons/ai';
-import { Posts } from '../../../mocks/constants/PostsData';
 import PostItem from '../../Feed/PostItem';
-
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { Post } from './types';
+import * as S from './style';
 function PostList() {
+  const getPosts = async () => {
+    const res = await axios.get('/posts');
+    return res.data;
+  };
+  const { isLoading, data: posts, error } = useQuery('posts', getPosts);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      {Posts.map((Post) => (
-        <PostItem key={Post.id} Post={Post} />
+    <S.PostList>
+      {posts.map((post: Post) => (
+        <div key={post.id}>
+          <h1>
+            <PostItem post={post} />
+          </h1>
+        </div>
       ))}
-    </>
+    </S.PostList>
   );
 }
 
 export default PostList;
-
-// export const LikeBtn = styled(AiOutlineHeart)`
-//   width: 25px;
-//   height: 25px;
-// `;

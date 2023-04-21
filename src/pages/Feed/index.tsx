@@ -1,12 +1,17 @@
 import React from 'react';
-import UsersWrap from '../../components/Feed/UsersWrap';
+import UsersCarousel from '../../components/Feed/UsersCarousel';
 import PostList from '../../components/Feed/PostList';
+import * as S from './style';
+import Body from '../../components/Feed/Body';
+
 function Feed() {
   return (
-    <div>
-      <UsersWrap />
-      <PostList />
-    </div>
+    <S.Feed>
+      <Body>
+        <UsersCarousel />
+        <PostList />{' '}
+      </Body>
+    </S.Feed>
   );
 }
 

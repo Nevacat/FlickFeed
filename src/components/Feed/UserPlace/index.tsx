@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style';
 import styled from 'styled-components';
-import { HiOutlineDotsCircleHorizontal } from 'react-icons/hi';
-import { Posts } from '../../../mocks/constants/PostsData';
-function UserPlace({ username }) {
+import Modal from '../Modal';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { StyledEditBtn } from './style';
+function UserPlace({ username, post }) {
+  const [modal, setModal] = useState(false);
   return (
     <S.UserPlace>
-      <>
-        <div>
-          {' '}
-          <h3> {username} </h3>
-          <h3>seoul</h3>{' '}
-        </div>
+      <div>
+        {' '}
+        <h1 style={{ color: '#45537c' }}>{post.author.username}</h1>
+        <h1 style={{ color: '#B3B6C4', fontSize: '10px' }}>
+          {post.place}
+        </h1>{' '}
+      </div>
 
-        <StyledEditBtn />
-      </>
+      <StyledEditBtn
+        onClick={() => {
+          setModal(!modal);
+        }}
+      />
     </S.UserPlace>
   );
 }
 
 export default UserPlace;
-
-const StyledEditBtn = styled(HiOutlineDotsCircleHorizontal)`
-  width: 20px;
-  height: 20px;
-`;
