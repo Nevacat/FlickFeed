@@ -8,7 +8,7 @@ import Comments from '../Comments';
 import * as S from './style';
 import { StyledFaRegComment } from './style';
 
-function PostItem({ post }) {
+function PostItem({ post }: any) {
   return (
     <S.PostItem>
       <S.TopSection>

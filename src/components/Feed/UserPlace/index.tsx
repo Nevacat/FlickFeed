@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { StyledEditBtn } from './style';
-function UserPlace({ username, post }) {
+function UserPlace({ username, post }: any) {
   const [modal, setModal] = useState(false);
   return (
     <S.UserPlace>
