@@ -7,7 +7,6 @@ import { useMutation } from 'react-query';
 import axios from 'axios';
 
 function LikeBtn({ postId }) {
-  // const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
   const { mutate, isLikeLoading, error } = useMutation(() =>
@@ -16,23 +15,18 @@ function LikeBtn({ postId }) {
 
   const toggleLike = () => {
     if (isLiked) {
-      // setLike(like - 1);
       setIsLiked(false);
       mutate();
     } else {
-      // setLike(like + 1);
       setIsLiked(true);
       mutate();
     }
   };
   return (
     <>
-      {/* <S.Like> */}
       <S.LikeBtn onClick={toggleLike}>
         {isLiked ? <RedLikeBtn /> : <AiOutlineHeart />}
       </S.LikeBtn>{' '}
-      {/* </S.Like> */}
-      {/* <span>{like}</span>likes{' '} */}
     </>
   );
 }
