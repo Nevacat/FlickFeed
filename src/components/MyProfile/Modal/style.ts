@@ -15,7 +15,7 @@ export const Modal = styled.aside`
   visibility: hidden;
   z-index: -1;
   transform: translate3d(0, 100%, 0);
-  transition: transform 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   ${({ toggle }: any) =>
     toggle &&
