@@ -54,4 +54,5 @@ export const LogoutButton = styled.button`
   border: none;
   font-size: 20px;
   color: ${({ theme }) => theme.color.navy};
+  background-color: transparent;
 `;
