@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CardItem = styled.li`
+  height: 84px;
   border-radius: 6px;
   overflow: hidden;
 

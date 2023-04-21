@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BackgroundImage = styled.div`
-  height: 130px;
+  height: 170px;
   margin: 0 -15px;
 
   img {

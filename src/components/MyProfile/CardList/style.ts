@@ -12,7 +12,7 @@ export const CardContainer = styled.div`
 export const CardList = styled.ol`
   display: grid;
   width: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 24px;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
 `;
