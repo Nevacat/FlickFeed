@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Layout = styled.div`
+  display: ${({ show }: any) => (show ? 'block' : 'none')};
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.color.white};
   width: 375px;
