@@ -77,6 +77,7 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
             <input
               name="username"
               type="text"
+              value={userInput.username}
               id="username"
               onChange={changeInputHandler}
             />
@@ -87,6 +88,7 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
             <input
               name="userInfo"
               type="text"
+              value={userInput.userInfo}
               id="userInfo"
               onChange={changeInputHandler}
             />
