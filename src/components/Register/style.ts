@@ -64,5 +64,19 @@ export let ImgStyle = styled.img`
 
 export let Warning = styled.p`
     margin-left: 25px;
-    margin-top: 18px;
+    margin-top: 10px;
+`
+
+export let PasswordConfirm = styled.input`
+    width: 300px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 15px;
+    border-radius: 20px;
+    padding: 10px 10px;
+`
+
+export let FileSubmit = styled.input`
+    margin-left: 85px;
+    margin-top: 10px;
 `
