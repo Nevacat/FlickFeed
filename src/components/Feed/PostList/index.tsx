@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import { Post } from './types';
 import * as S from './style';
-function PostList() {
+function PostList({ setIsCommentModal, isCommentModal }) {
   const getPosts = async () => {
     const res = await axios.get('/posts');
     return res.data;
@@ -19,7 +19,11 @@ function PostList() {
       {posts.map((post: Post) => (
         <div key={post.id}>
           <h1>
-            <PostItem post={post} />
+            <PostItem
+              post={post}
+              setIsCommentModal={setIsCommentModal}
+              isCommentModal={isCommentModal}
+            />
           </h1>
         </div>
       ))}

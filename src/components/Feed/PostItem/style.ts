@@ -22,4 +22,5 @@ export const StyledFaRegComment = styled(FaRegComment)`
   height: 21px;
   margin-left: 20px;
   color: #000;
+  cursor: pointer;
 `;

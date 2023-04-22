@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PostImg from '../PostImg';
 import User from '../User';
 import UserPlace from '../UserPlace';
@@ -8,7 +8,7 @@ import Comments from '../Comments';
 import * as S from './style';
 import { StyledFaRegComment } from './style';
 
-function PostItem({ post }: any) {
+function PostItem({ post, setIsCommentModal, isCommentModal }) {
   return (
     <S.PostItem>
       <S.TopSection>
@@ -20,10 +20,18 @@ function PostItem({ post }: any) {
 
       <S.Reaction>
         <LikeBtn postId={post.id} />
-        <StyledFaRegComment />
+        <StyledFaRegComment
+          onClick={() => {
+            setIsCommentModal(true);
+          }}
+        />
       </S.Reaction>
 
-      <Comments postId={post.id} />
+      <Comments
+        postId={post.id}
+        setIsCommentModal={setIsCommentModal}
+        isCommentModal={isCommentModal}
+      />
     </S.PostItem>
   );
 }
