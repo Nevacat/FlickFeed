@@ -1,10 +1,12 @@
 export interface LoginRequest {
-    username: string
+    email: string
     password: string
   }
   
   export interface RegisterRequest extends LoginRequest {
-    email: string
+    username: string,
+    passwordConfirm: string,
+    selectedFile: File | null
   }
   
   export interface UserPayload {
