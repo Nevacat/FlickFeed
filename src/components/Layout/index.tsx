@@ -1,8 +1,11 @@
 import React from 'react'
 import * as S from './style'
+import { Outlet } from 'react-router-dom'
 function Layout() {
   return (
-    <S.Layout>Layout</S.Layout>
+    <S.Layout>
+      <Outlet/>
+    </S.Layout>
   )
 }
 
