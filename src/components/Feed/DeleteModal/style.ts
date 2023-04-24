@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-export const Modal = styled.aside`
+export const DeleteModal = styled.aside`
+  width: 200px;
+  height: 100px;
+  background: red;
   position: absolute;
   bottom: -22px;
   left: -12px;
@@ -13,7 +16,7 @@ export const Modal = styled.aside`
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
   opacity: 0;
   visibility: hidden;
-  z-index: -1;
+  z-index: 3;
   transform: translate3d(0, 100%, 0);
   transition: all 200ms ease-in-out;
 
@@ -25,6 +28,35 @@ export const Modal = styled.aside`
       z-index: 10;
       transform: translate3d(0, 0, 0);
     `};
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const inputContainer = styled.div`
+  flex-grow: 1;
+`;
+
+export const SingleInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  color: ${({ theme }) => theme.color.gray};
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  label {
+    margin-bottom: 4px;
+  }
+
+  input {
+    padding: 4px;
+  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -43,4 +75,7 @@ export const DefaultButton = styled.button`
 export const SubmitButton = styled(DefaultButton)`
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.skyblue};
+`;
+export const Warning = styled.div`
+  text-align: center;
 `;

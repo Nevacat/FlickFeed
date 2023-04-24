@@ -24,3 +24,8 @@ export const StyledFaRegComment = styled(FaRegComment)`
   color: #000;
   cursor: pointer;
 `;
+export const PostImg = styled.div`
+  height: 203px;
+  border-radius: 15px;
+  background-size: cover;
+`;

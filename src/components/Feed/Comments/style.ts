@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Comments = styled.div`
+export const Body = styled.div`
   overflow: auto;
   border: 1px solid ${({ theme }) => theme.color.gray};
 `;

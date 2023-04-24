@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyled } from './styles/globalStyle';
 import Routers from './routes/routes';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import FeedProvider from './context/FeedContext';
 export const ModalContext = createContext(null);
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,8 +31,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <GlobalStyled />
-        <Routers />
+        <FeedProvider>
+          <GlobalStyled />
+          <Routers />
+        </FeedProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

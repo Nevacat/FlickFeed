@@ -1,26 +1,38 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import User from '../User';
 import * as S from './style';
 import { useQuery } from 'react-query';
-import axios from 'axios';
+import { getUsers, getUsersImages, getUserData } from '../../../api/data';
 import MultiCarousel from '../../MultiCarousel';
 
 function UsersCarousel() {
-  const getUsers = async () => {
-    const res = await axios.get('/users');
-    return res.data;
-  };
-  const { isLoading, data: users, error } = useQuery('users', getUsers);
-  if (isLoading) {
-    return <div>Loading...</div>;
+  const {
+    isLoading,
+    data: users,
+    error,
+  } = useQuery('users', getUsers, {
+    select: (payload) => payload.users,
+  });
+
+  const {
+    isLoading: isLoadingUserdata,
+    data: userData,
+    error: userDataError,
+  } = useQuery('usersData', getUserData);
+  if (isLoading || isLoadingUserdata) {
+    return <div>로딩중...</div>;
   }
+
+  const userList = users.map((user) => {
+    const matchingUserData = userData.find((data) => data.id === user.id);
+    return { ...user, ...matchingUserData };
+  });
   return (
     <S.UsersCarousel>
       <MultiCarousel swipeable arrows={false}>
-        {users.Users.map((user: any) => (
+        {userList.map((user: any) => (
           <div key={user.id}>
             <User user={user} avatarSize='big' />
-            <h1> {user.username}</h1>
           </div>
         ))}
       </MultiCarousel>{' '}

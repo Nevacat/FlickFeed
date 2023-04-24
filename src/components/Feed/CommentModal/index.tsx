@@ -1,20 +1,24 @@
 import React from 'react';
 import * as S from './style';
 import { StyledRxCross2 } from './style';
-function CommentModal({ isCommentModal, setIsCommentModal }) {
+import { useFeed } from '../../../context/FeedContext';
+function CommentModal() {
+  const { isCommentModal, setIsCommentModal } = useFeed();
   return (
     <S.ModalOverlay>
       <S.Modal>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam
-        voluptatum vel, id fuga facilis exercitationem. Magnam necessitatibus
-        excepturi quos explicabo hic. Velit quas tempore itaque nemo corrupti
-        fugiat est similique?
+        <div style={{ color: 'white' }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+          atque officiis distinctio ullam ipsam excepturi dolorem soluta? Cum
+          delectus neque debitis repellendus architecto, repellat est explicabo
+          aspernatur nihil quisquam saepe.
+        </div>
+
         <StyledRxCross2
           onClick={() => {
             setIsCommentModal(false);
           }}
         />
-        {/* <CommentsArea/> */}
       </S.Modal>
     </S.ModalOverlay>
   );

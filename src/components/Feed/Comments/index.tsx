@@ -4,26 +4,23 @@ import { useQuery, useQueryClient } from 'react-query';
 import * as S from './style';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
+import { getPost, getPosts } from '../../../api/data';
 
-function Comments({ postId }) {
+function Body({ postId, postContent }) {
   const queryClient = useQueryClient();
   const [content, setContent] = useState('');
 
-  const getPost = async () => {
-    const res = await axios.get(`/posts/${postId}`);
-    return res.data;
-  };
   const {
     isCommentLoading,
     data: postComments,
     error,
-  } = useQuery(['post', postId], getPost, {
+  } = useQuery(['post', postId], () => getPost(postId), {
     select: (data) => data.comments,
+    enabled: !!postId,
   });
   if (isCommentLoading) {
-    return <div>Loading...</div>;
+    return <div>로딩중입니다</div>;
   }
-
   const { mutate, isLoading } = useMutation(
     (formData) => axios.post('/comment', formData),
     {
@@ -40,18 +37,11 @@ function Comments({ postId }) {
   };
 
   return (
-    <S.Comments>
+    <S.Body>
+      {' '}
+      <div> {postContent} </div>
       <S.Form onSubmit={handleSubmit}>
-        본문 API 받으면 작성 예정
         <S.CommentWrapper>
-          {' '}
-          {/* {postComments &&
-            postComments.map((postComment) => (
-              <div key={postComment.id}>
-                <span>{postComment.author.username}</span>:
-                <span>{postComment.content}</span>
-              </div>
-            ))} */}
           <S.Input
             type='text'
             value={content}
@@ -65,8 +55,20 @@ function Comments({ postId }) {
           </S.Button>
         </S.CommentWrapper>
       </S.Form>
-    </S.Comments>
+    </S.Body>
   );
 }
 
-export default Comments;
+export default Body;
+{
+  (' ');
+}
+{
+  /* {postComments &&
+            postComments.map((postComment) => (
+              <div key={postComment.id}>
+                <span>{postComment.author.username}</span>:
+                <span>{postComment.content}</span>
+              </div>
+            ))} */
+}
