@@ -8,7 +8,7 @@ import { getPost, getPosts } from '../../../api/data';
 
 function Body({ postId, postContent }) {
   const queryClient = useQueryClient();
-  const [content, setContent] = useState('');
+  const [comment, setComment] = useState('');
 
   const {
     isCommentLoading,
@@ -26,32 +26,39 @@ function Body({ postId, postContent }) {
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['comments', postId]);
-        setContent('');
+        setComment('');
       },
     }
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutate({ postId, content });
+    mutate({ postId, comment });
   };
 
   return (
     <S.Body>
       {' '}
-      <div> {postContent} </div>
       <S.Form onSubmit={handleSubmit}>
+        {' '}
+        <S.Content> {postContent} </S.Content>
         <S.CommentWrapper>
           <S.Input
             type='text'
-            value={content}
+            value={comment}
             placeholder='댓글 달기...'
             onChange={(e) => {
-              setContent(e.target.value);
+              setComment(e.target.value);
             }}
           />
-          <S.Button type='submit' disabled={isLoading}>
-            {isLoading ? '작성중' : '게시'}
+          <S.Button
+            type='submit'
+            disabled={isLoading}
+            onClick={() => {
+              setComment('');
+            }}
+          >
+            {isCommentLoading ? '작성중' : '게시'}
           </S.Button>
         </S.CommentWrapper>
       </S.Form>

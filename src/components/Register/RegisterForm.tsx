@@ -3,7 +3,7 @@ import { UseMutateFunction } from 'react-query'
 import { AuthResponse, LoginRequest , RegisterRequest} from '../../interface/auth'
 import { AxiosError } from 'axios'
 import { getCookie} from '../../utils/cookies'
-import { ContainerStyle, EmailStyle, PwStyle, UsernameStyle, SignupStyle, Signup, ImgStyle, Warning, PasswordConfirm, FileSubmit} from './style'
+import { ContainerStyle, EmailStyle, PwStyle, UsernameStyle, SignupStyle, Signup, ImgStyle, Warning, PasswordConfirm, FileSubmit, StatusStyle} from './style'
 import { useNavigate } from 'react-router-dom'
 
 export interface RegisterFormProps {
@@ -13,7 +13,7 @@ export interface RegisterFormProps {
 function RegisterForm({ mutate }: RegisterFormProps) {
   let navigate = useNavigate()
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [userInput, setUserInput] = useState<RegisterRequest>({ email: '', password: '' , username:'', passwordConfirm: '',selectedFile: null })
+  const [userInput, setUserInput] = useState<RegisterRequest>({ email: '', password: '' , username:'', passwordConfirm: '',selectedFile: null , sangTae:''})
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUserInput({ ...userInput, [name]: value })
@@ -24,7 +24,7 @@ function RegisterForm({ mutate }: RegisterFormProps) {
       mutate(userInput)
       console.log(userInput)
       alert("All Signed Up!")
-      setUserInput({email: '', password: '', username: '', passwordConfirm: '', selectedFile: null})
+      setUserInput({email: '', password: '', username: '', passwordConfirm: '', selectedFile: null, sangTae: ''})
       navigate("/login")
     }else{
       alert("비밀번호를 확인해주세요!")
@@ -52,7 +52,10 @@ function RegisterForm({ mutate }: RegisterFormProps) {
         <PasswordConfirm name="passwordConfirm" type="password" value={userInput.passwordConfirm} onChange={onChange} className="passwordConfirm" placeholder="비밀번호 확인" pattern=".{8,}" required/>
       </div>
       <div>
-        <UsernameStyle type="text" name="username" placeholder="유저네임" value={userInput.username} onChange={onChange} className="username" />
+        <UsernameStyle type="text" name="username" placeholder="유저네임" value={userInput.username} onChange={onChange} className="username" required/>
+      </div>
+      <div>
+        <StatusStyle type="text" placeholder="상태메시지" value={userInput.sangTae} onChange={onChange}/>
       </div>
       <div>
         <FileSubmit type="file" accept="image/*" onChange={handleFileSelect}/>

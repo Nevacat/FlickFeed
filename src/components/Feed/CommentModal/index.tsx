@@ -7,12 +7,7 @@ function CommentModal() {
   return (
     <S.ModalOverlay>
       <S.Modal>
-        <div style={{ color: 'white' }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-          atque officiis distinctio ullam ipsam excepturi dolorem soluta? Cum
-          delectus neque debitis repellendus architecto, repellat est explicabo
-          aspernatur nihil quisquam saepe.
-        </div>
+        <div style={{ color: 'white' }}></div>
 
         <StyledRxCross2
           onClick={() => {
