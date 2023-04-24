@@ -3,7 +3,7 @@ import { Cookie, CookieSetOptions } from 'universal-cookie'
 
 const cookies = new Cookies()
 
-export const getCookie = (name: string) => {
+export const getCookie = (name: string): Cookie => {
   try {
     return cookies.get(name)
   } catch (error) {
