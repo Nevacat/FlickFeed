@@ -4,6 +4,7 @@ import App from './App'
 import { worker } from './mocks/browser'
 import {BrowserRouter} from 'react-router-dom'
 
+
 if(import.meta.env.MODE === 'development') {
   worker.start({onUnhandledRequest: 'bypass'});
 }

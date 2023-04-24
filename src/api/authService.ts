@@ -3,16 +3,17 @@ import { axiosInstance } from './axios'
 
 export const login = async (user: LoginRequest) => {
   try {
-    const { data } = await axiosInstance.post<AuthResponse>('/api/auth/login', user)
+    const { data } = await axiosInstance.post<AuthResponse>('/auth/login', user)
     return data
   } catch (error) {
-    console.log(error)
+    throw error
   }
 }
 
+
 export const register = async (user: RegisterRequest) => {
   try {
-    const { data } = await axiosInstance.post<AuthResponse>('/api/auth/register', user)
+    const { data } = await axiosInstance.post<AuthResponse>('/auth/register', user)
     return data
   } catch (error) {
     console.log(error)
@@ -21,7 +22,7 @@ export const register = async (user: RegisterRequest) => {
 
 export const verify = async () => {
   try {
-    const { data } = await axiosInstance.get<UserPayload>('/api/auth/verify')
+    const { data } = await axiosInstance.get<UserPayload>('/auth/verify')
     return data
   } catch (error) {
     console.log(error)

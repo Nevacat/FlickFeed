@@ -11,27 +11,27 @@ backgroundColor: white;
 
 export let EmailStyle = styled.input`
     width: 300px;
-    height: 30px;
+    height: 24px;
     margin-left: 10px;
-    margin-top: 30px;
+    margin-top: 24px;
     border-radius: 20px;
     padding: 10px 10px;
 `
 
 export let PwStyle = styled.input`
     width: 300px;
-    height: 30px;
+    height: 24px;
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 12px;
     border-radius: 20px;
     padding: 10px 10px;
 `
 
 export let UsernameStyle = styled.input`
     width: 300px;
-    height: 30px;
+    height: 24px;
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 12px;
     border-radius: 20px;
     padding: 10px 10px;
 `
@@ -69,9 +69,9 @@ export let Warning = styled.p`
 
 export let PasswordConfirm = styled.input`
     width: 300px;
-    height: 30px;
+    height: 24px;
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 12px;
     border-radius: 20px;
     padding: 10px 10px;
 `
@@ -79,4 +79,12 @@ export let PasswordConfirm = styled.input`
 export let FileSubmit = styled.input`
     margin-left: 85px;
     margin-top: 10px;
+`
+export let StatusStyle = styled.input`
+width: 300px;
+height: 24px;
+margin-left: 10px;
+margin-top: 12px;
+border-radius: 20px;
+padding: 10px 10px;
 `

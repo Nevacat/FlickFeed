@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyled } from './styles/globalStyle';
 import Routers from './routes/routes';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,7 +12,7 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
     },
   },
-});
+})
 
 function App() {
   // const testPost = async () => {
@@ -26,15 +26,15 @@ function App() {
   // useEffect(() => {
   //   testPost();
   // }, []);
-
+  
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyled />
-        <Routers />
-      </ThemeProvider>
-    </QueryClientProvider>
-  );
+    <ThemeProvider theme={theme}>
+      <GlobalStyled />
+      <QueryClientProvider client={queryClient}>
+      <Routers />
+      </QueryClientProvider>
+    </ThemeProvider>
+  )
 }
 
 export default App;
