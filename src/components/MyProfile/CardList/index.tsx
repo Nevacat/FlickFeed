@@ -2,27 +2,17 @@ import React from 'react';
 import CardItem from '../CardItem';
 import * as S from './style';
 
-function index() {
+type CardListProps = {
+  posts: Post[];
+};
+
+function index({ posts }: CardListProps) {
   return (
     <S.CardContainer>
       <S.CardList>
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
+        {posts?.map((post) => (
+          <CardItem key={post.id} {...post} />
+        ))}
       </S.CardList>
     </S.CardContainer>
   );
