@@ -1,18 +1,19 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import { useEffect, createContext, useState } from 'react';
 import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyled } from './styles/globalStyle';
 import Routers from './routes/routes';
-import { QueryClient, QueryClientProvider } from 'react-query'
-
+import { QueryClient, QueryClientProvider } from 'react-query';
+import FeedProvider from './context/FeedContext';
+export const ModalContext = createContext(null);
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
     },
   },
-})
+});
 
 function App() {
   // const testPost = async () => {
@@ -26,15 +27,17 @@ function App() {
   // useEffect(() => {
   //   testPost();
   // }, []);
-  
+
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyled />
-      <QueryClientProvider client={queryClient}>
-      <Routers />
-      </QueryClientProvider>
-    </ThemeProvider>
-  )
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <FeedProvider>
+          <GlobalStyled />
+          <Routers />
+        </FeedProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App;

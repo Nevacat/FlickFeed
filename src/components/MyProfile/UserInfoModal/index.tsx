@@ -29,8 +29,8 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
   const { mutate } = useMutation(editUser, {
     onSuccess: (data) => {
       console.log(data);
-      queryClient.setQueryData('user', data);
-      window.location.reload();
+      // queryClient.setQueryData(['user'], data);
+      // window.location.reload();
     },
     onError: (error) => {
       console.log(error);
@@ -77,6 +77,7 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
               value={userInput.userInfo}
               id="userInfo"
               onChange={changeInputHandler}
+              style={{}}
             />
           </S.SingleInput>
         </S.inputContainer>

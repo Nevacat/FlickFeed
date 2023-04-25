@@ -1,15 +1,17 @@
 import styled, { css } from 'styled-components';
 
-interface IModal {
-  toggle: boolean;
-}
-
-export const Modal = styled.aside<IModal>`
-  position: absolute;
-  bottom: -305px;
-  left: -103px;
-  width: 352px;
+// export const Container = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   position: fixed;
+// `;
+export const DeleteModal = styled.aside`
+  width: 100%;
   height: 190px;
+  background: red;
+  position: fixed;
+  bottom: -22px;
+  left: -12px;
   padding: 16px 12px 12px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px 8px 0 0;
@@ -17,9 +19,9 @@ export const Modal = styled.aside<IModal>`
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
   opacity: 0;
   visibility: hidden;
-  z-index: -1;
-  transform: translate3d(0, 190px, 0);
-  transition: top 500ms ease-in-out;
+  z-index: 3;
+  transform: translate3d(0, 100%, 0);
+  transition: all 200ms ease-in-out;
 
   ${({ toggle }: any) =>
     toggle &&
@@ -29,6 +31,35 @@ export const Modal = styled.aside<IModal>`
       z-index: 10;
       transform: translate3d(0, 0, 0);
     `};
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const inputContainer = styled.div`
+  flex-grow: 1;
+`;
+
+export const SingleInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  color: ${({ theme }) => theme.color.gray};
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  label {
+    margin-bottom: 4px;
+  }
+
+  input {
+    padding: 4px;
+  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -47,4 +78,7 @@ export const DefaultButton = styled.button`
 export const SubmitButton = styled(DefaultButton)`
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.skyblue};
+`;
+export const Warning = styled.div`
+  text-align: center;
 `;

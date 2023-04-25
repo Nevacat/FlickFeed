@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-export const User = styled.div``;
-
-export const UserImgWrapper = styled.div`
+export const User = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
+
 export const UserName = styled.h3`
-  display: flex;
-  justify-content: center;
+  font-size: ${({ theme }) => theme.fontSize.small};
+  margin: 8px 0;
 `;
