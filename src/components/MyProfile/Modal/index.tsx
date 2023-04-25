@@ -47,8 +47,8 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
   const { mutate } = useMutation(editUser, {
     onSuccess: (data) => {
       console.log(data);
-      queryClient.setQueryData('user', data);
-      window.location.reload();
+      // queryClient.setQueryData(['user'], data);
+      // window.location.reload();
     },
     onError: (error) => {
       console.log(error);
@@ -73,30 +73,33 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
       <S.Form onSubmit={submitInputHandler}>
         <S.inputContainer>
           <S.SingleInput>
-            <label htmlFor="username">닉네임</label>
+            <label htmlFor='username'>닉네임</label>
             <input
-              name="username"
-              type="text"
-              id="username"
+              name='username'
+              type='text'
+              value={userInput.username}
+              id='username'
               onChange={changeInputHandler}
             />
           </S.SingleInput>
 
           <S.SingleInput>
-            <label htmlFor="userInfo">상태 메시지</label>
+            <label htmlFor='userInfo'>상태 메시지</label>
             <input
-              name="userInfo"
-              type="text"
-              id="userInfo"
+              name='userInfo'
+              type='text'
+              value={userInput.userInfo}
+              id='userInfo'
               onChange={changeInputHandler}
+              style={{}}
             />
           </S.SingleInput>
         </S.inputContainer>
 
         <S.ButtonGroup>
-          <S.SubmitButton type="submit">변경</S.SubmitButton>
+          <S.SubmitButton type='submit'>변경</S.SubmitButton>
           <S.DefaultButton
-            type="button"
+            type='button'
             onClick={() => setIsModalOpen(!isModalOpen)}
           >
             취소
