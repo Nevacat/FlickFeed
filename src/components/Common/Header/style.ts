@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+interface IHeader {
+  location: { pathname: string };
+}
 
 export const Header = styled.header`
   position: absolute;
@@ -13,41 +16,42 @@ export const Header = styled.header`
   z-index: 10;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.div<IHeader>`
   display: ${({ location }: any) =>
     location.pathname === '/myProfile' ? 'none' : 'block'};
   flex-grow: 1;
   transform: scale(0.5);
   height: 100%;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
 `;
 
-export const StyledLink = styled(Link)`
+export const Img = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+`;
+
+export const StyledLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 36px;
   height: 36px;
   border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
   color: ${({ theme }) => theme.color.navy};
   font-size: 20px;
 `;
 
 export const BackButton = styled(StyledLink)`
-  display: ${({ location }: any) =>
+  display: ${({ location }: IHeader) =>
     location.pathname === '/myProfile' ? 'flex' : 'none'};
   outline: none;
   border: none;
 `;
 
-export const LogoutButton = styled.button`
+export const LogoutButton = styled.button<IHeader>`
   display: ${({ location }: any) =>
-    location.pathname === '/' ? 'flex' : 'none'};
+    location.pathname === '/posts' ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
   outline: none;

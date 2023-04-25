@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { VscChevronLeft } from 'react-icons/vsc';
 import { AiFillGithub } from 'react-icons/ai';
 import * as S from './style';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
-import axios from 'axios';
+import { axiosInstance } from '../../../api/axios';
+import { removeCookie } from '../../../utils/cookies';
 
 function index() {
   const navigate = useNavigate();
@@ -12,8 +13,9 @@ function index() {
   console.log(location);
 
   const logoutHandler = async () => {
-    const response = await axios.post('/logout');
-    // navigate('/login');
+    const response = await axiosInstance.post('/auth/logout');
+    removeCookie('accessToken');
+    navigate('/');
     return response.data;
   };
 
@@ -27,10 +29,10 @@ function index() {
       </S.LogoutButton>
 
       <S.Logo location={location}>
-        <img src="images/FlickFeed.png" alt="FilckFeed" />
+        <S.Img src="images/FlickFeed.png" alt="FilckFeed" />
       </S.Logo>
 
-      <S.StyledLink to="https://github.com/Nevacat/FlickFeed">
+      <S.StyledLink href="https://github.com/Nevacat/FlickFeed">
         <AiFillGithub />
       </S.StyledLink>
     </S.Header>
