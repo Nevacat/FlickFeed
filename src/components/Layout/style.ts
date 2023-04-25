@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Layout = styled.div`
+interface ILayout {
+  show: boolean;
+}
+
+export const Layout = styled.div<ILayout>`
   display: ${({ show }: any) => (show ? 'block' : 'none')};
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.color.white};
