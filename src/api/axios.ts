@@ -3,8 +3,7 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 const getAxiosInstance = () => {
   const config: AxiosRequestConfig = {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
+    baseURL: import.meta.env.VITE_SERVER_URL,
     headers: {
       'Content-type': 'application/json',
     },

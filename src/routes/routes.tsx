@@ -4,15 +4,21 @@ import Layout from '../components/Layout';
 import LoginForm from '../components/Login/LoginForm';
 import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
-import Feed from '../pages/Feed';
+import MyProfilePage from '../pages/MyProfile';
+import FeedPage from '../pages/Feed';
+import ProtectedRouter from './ProtectedRouter';
 
 function Routers() {
   return (
     <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index path='login' element={<LoginPage />} />
-        <Route path='/posts' element={<Feed />} />
-        <Route path='/register' element={<RegisterPage />} />
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+
+      <Route element={<ProtectedRouter />}>
+        <Route element={<Layout />}>
+          <Route path="myProfile" element={<MyProfilePage />} />
+          <Route path="posts" element={<FeedPage />} />
+        </Route>
       </Route>
     </Routes>
   );

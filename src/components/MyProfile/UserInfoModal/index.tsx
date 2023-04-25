@@ -1,54 +1,36 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { QueryClient, useMutation } from 'react-query';
 import * as S from './style';
-
-type UserInput = {
-  username: string;
-  userInfo: string;
-};
+import { UserInput } from '../../../interface/user';
+import { editUser } from '../../../api/data';
 
 type ModalProps = {
   isModalOpen: boolean;
-  setIsModalOpen: () => void;
-  user: { username: string; userInfo: string };
+  setIsModalOpen: (isModalOpen: boolean) => void;
+  user: { user: { username: string; userInfo: string } };
 };
 
-function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
+function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
   const queryClient = new QueryClient();
 
   const [userInput, setUserInput] = useState<UserInput>({
-    username: user?.username,
-    userInfo: user?.userInfo,
+    username: user?.user.username,
+    userInfo: user?.user.userInfo,
   });
-
-  const editUser = async (input: UserInput) => {
-    const response = await axios({
-      method: 'PUT',
-      url: '/users',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhbGljZSIsImVtYWlsIjoidGVzdEBuYXZlci5jb20iLCJpYXQiOjE2ODE1MzY5MzAsImV4cCI6MTY4MTU0MDUzMH0.s0km3UHRLyTh8pR2sKxludFTbmRH_nNvvp0x_kDxpVI',
-      },
-      data: input,
-    });
-    return response.data;
-  };
 
   useEffect(() => {
     setUserInput((prevState) => ({
       ...prevState,
-      username: user?.username,
-      userInfo: user?.userInfo,
+      username: user?.user.username,
+      userInfo: user?.user.userInfo,
     }));
   }, [isModalOpen]);
 
   const { mutate } = useMutation(editUser, {
     onSuccess: (data) => {
       console.log(data);
-      // queryClient.setQueryData(['user'], data);
-      // window.location.reload();
+      queryClient.setQueryData(['user'], data);
+      window.location.reload();
     },
     onError: (error) => {
       console.log(error);
@@ -73,23 +55,27 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
       <S.Form onSubmit={submitInputHandler}>
         <S.inputContainer>
           <S.SingleInput>
-            <label htmlFor='username'>닉네임</label>
+            <label style={{ textAlign: 'left' }} htmlFor="username">
+              닉네임
+            </label>
             <input
-              name='username'
-              type='text'
+              name="username"
+              type="text"
               value={userInput.username}
-              id='username'
+              id="username"
               onChange={changeInputHandler}
             />
           </S.SingleInput>
 
           <S.SingleInput>
-            <label htmlFor='userInfo'>상태 메시지</label>
+            <label style={{ textAlign: 'left' }} htmlFor="userInfo">
+              상태 메시지
+            </label>
             <input
-              name='userInfo'
-              type='text'
+              name="userInfo"
+              type="text"
               value={userInput.userInfo}
-              id='userInfo'
+              id="userInfo"
               onChange={changeInputHandler}
               style={{}}
             />
@@ -97,9 +83,9 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
         </S.inputContainer>
 
         <S.ButtonGroup>
-          <S.SubmitButton type='submit'>변경</S.SubmitButton>
+          <S.SubmitButton type="submit">변경</S.SubmitButton>
           <S.DefaultButton
-            type='button'
+            type="button"
             onClick={() => setIsModalOpen(!isModalOpen)}
           >
             취소
@@ -110,4 +96,4 @@ function Modal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
   );
 }
 
-export default Modal;
+export default UserInfoModal;

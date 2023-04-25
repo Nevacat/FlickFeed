@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 
-export const Modal = styled.aside`
+interface IModal {
+  toggle: boolean;
+}
+
+export const Modal = styled.aside<IModal>`
   position: absolute;
-  bottom: -22px;
-  left: -12px;
-  width: 100%;
+  bottom: -305px;
+  left: -103px;
+  width: 352px;
   height: 190px;
   padding: 16px 12px 12px;
   background-color: ${({ theme }) => theme.color.white};
@@ -14,8 +18,8 @@ export const Modal = styled.aside`
   opacity: 0;
   visibility: hidden;
   z-index: -1;
-  transform: translate3d(0, 100%, 0);
-  transition: all 200ms ease-in-out;
+  transform: translate3d(0, 190px, 0);
+  transition: top 500ms ease-in-out;
 
   ${({ toggle }: any) =>
     toggle &&
@@ -25,6 +29,32 @@ export const Modal = styled.aside`
       z-index: 10;
       transform: translate3d(0, 0, 0);
     `};
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const inputContainer = styled.div`
+  flex-grow: 1;
+`;
+
+export const SingleInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  color: ${({ theme }) => theme.color.gray};
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+  label {
+    margin-bottom: 4px;
+  }
+  input {
+    padding: 4px;
+  }
 `;
 
 export const ButtonGroup = styled.div`

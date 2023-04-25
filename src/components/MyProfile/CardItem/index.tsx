@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import UserPostModal from '../UserPostModal';
 import * as S from './style';
 
-function index() {
+type CartItemProps = {
+  postImg: string;
+};
+
+function index({ postImg }: CartItemProps) {
+  const [isUserPostModalOpen, setIsUserPostModalOpen] = useState(false);
+
   return (
-    <S.CardItem>
-      <img src="images/profile_background.jpg" alt="" />
-    </S.CardItem>
+    <>
+      <S.CardItem>
+        <S.ItemButton
+          onClick={() => setIsUserPostModalOpen(!isUserPostModalOpen)}
+        >
+          <S.ItemImage src={postImg} alt="" />
+        </S.ItemButton>
+      </S.CardItem>
+
+      {isUserPostModalOpen && (
+        <UserPostModal
+          postImg={postImg}
+          setIsUserPostModalOpen={setIsUserPostModalOpen}
+        />
+      )}
+    </>
   );
 }
 

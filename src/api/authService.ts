@@ -32,7 +32,7 @@ export const register = async (user: RegisterRequest) => {
 
 export const verify = async () => {
   try {
-    const { data } = await axiosInstance.get<UserPayload>('/auth/verify');
+    const { data } = await axiosInstance.post<UserPayload>('/auth/me');
     return data;
   } catch (error) {
     console.log(error);
