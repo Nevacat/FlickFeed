@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 
 const getAxiosInstance = () => {
   const config: AxiosRequestConfig = { 
-    baseURL: "http://localhost:5173",
+    baseURL: "http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com/",
     headers: {
       'Content-type': 'application/json',
     },
