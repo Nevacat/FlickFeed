@@ -31,6 +31,32 @@ export const Modal = styled.aside<IModal>`
     `};
 `;
 
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const inputContainer = styled.div`
+  flex-grow: 1;
+`;
+
+export const SingleInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  color: ${({ theme }) => theme.color.gray};
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+  label {
+    margin-bottom: 4px;
+  }
+  input {
+    padding: 4px;
+  }
+`;
+
 export const ButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
