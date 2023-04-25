@@ -3,7 +3,7 @@ import { UseMutateFunction } from 'react-query'
 import { AuthResponse, LoginRequest , RegisterRequest} from '../../interface/auth'
 import { AxiosError } from 'axios'
 import { getCookie} from '../../utils/cookies'
-import { ContainerStyle, EmailStyle, PwStyle, UsernameStyle, SignupStyle, Signup, ImgStyle, Warning, PasswordConfirm, FileSubmit, StatusStyle} from './style'
+import { ContainerStyle, EmailStyle, PwStyle, UsernameStyle, SignupStyle, Signup, ImgStyle, Warning, PasswordConfirm, FileSubmit, StatusStyle, Lab, SpanEl} from './style'
 import { useNavigate } from 'react-router-dom'
 
 export interface RegisterFormProps {
@@ -12,6 +12,9 @@ export interface RegisterFormProps {
 
 function RegisterForm({ mutate }: RegisterFormProps) {
   let navigate = useNavigate()
+
+  const [imageUrl, setImageUrl] = useState<string>('')
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [userInput, setUserInput] = useState<RegisterRequest>({ email: '', password: '' , username:'', passwordConfirm: '',selectedFile: null , sangTae:''})
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,14 +39,23 @@ function RegisterForm({ mutate }: RegisterFormProps) {
       ...prevState,
       selectedFile: file || null
     }))
+    if (file) {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        setImageUrl(reader.result as string)
+      }
+    }
   }
 
   return (
     <ContainerStyle onSubmit={onSubmit} className="container" >
       <Signup>Sign up for Flick Feed</Signup>
-      <ImgStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREv2iK0rk8t7xPQQx_G-SKoUNao4VpV5ywoF6VdVJZZQ&s"/>
+
+      <ImgStyle src={imageUrl || 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg'} />
+
       <div>
-      <EmailStyle name="email" type="email" value={userInput.email} onChange={onChange} className="email" placeholder="이메일"/>
+      <EmailStyle name="email" type="email" value={userInput.email} onChange={onChange} className="email" placeholder="이메일" required/>
       </div>
       <div>
       <PwStyle name="password" type="password" value={userInput.password} onChange={onChange} className="password" placeholder="비밀번호" pattern=".{8,}" required/>
@@ -55,10 +67,13 @@ function RegisterForm({ mutate }: RegisterFormProps) {
         <UsernameStyle type="text" name="username" placeholder="유저네임" value={userInput.username} onChange={onChange} className="username" required/>
       </div>
       <div>
-        <StatusStyle type="text" placeholder="상태메시지" value={userInput.sangTae} onChange={onChange}/>
+        <StatusStyle type="text" name="sangTae" placeholder="상태메시지" value={userInput.sangTae} onChange={onChange}/>
       </div>
       <div>
-        <FileSubmit type="file" accept="image/*" onChange={handleFileSelect}/>
+        <Lab htmlFor="imageInput">
+         <SpanEl>(프로필 사진)</SpanEl>
+        <FileSubmit type="file" accept="image/*" onChange={handleFileSelect} />
+        </Lab>
       </div>
       <SignupStyle type="submit" className="signUp">회원가입</SignupStyle>
       <Warning>Get started for free. No spam of affiliate links</Warning>

@@ -1,72 +1,80 @@
 import styled from "styled-components"
+import theme from "../../styles/theme"
 
+const width = "240px"
+const height = "15px"
+const margin = "12px auto 0"
+const borderRadius = "20px"
+const padding = "10px 10px"
+const display = "block"
+const border = "2px solid navy"
+const color = theme.color.navy
 
-export let ContainerStyle = styled.form`
-width: 375px;
-height: 667px;
-margin-top: -19.9px;
-margin-left: -14.5px;
-border-radius: 40.9px;
-background-color: white;
+export const ContainerStyle = styled.form`
+   border-radius: 40.9px;
+   background-color: white;
+   justify-content: center;
+   align-items: center;
 `
-export let EmailStyle = styled.input`
-    width: 295px;
-    height: 35px;
-    margin-left: 30px;
-    margin-top: 80px;
-    padding: 3px;
-    border-radius: 20px;
-    padding: 10px 10px;
+export const EmailStyle = styled.input`
+    width: ${width};
+    height: ${height};
+    margin: ${margin};
+    border-radius: ${borderRadius};
+    padding: ${padding};
+    display: ${display};
+    margin-top: 60px;
+    border: ${border}
     `
-export let PwStyle = styled.input`
-    width: 297px;
-    height: 35px;
-    margin-left: 30px;
-    margin-top: 10px;
-    padding: 3px;
-    border-radius: 20px;
-    padding: 10px 10px;
-    
+export const PwStyle = styled.input`
+width: ${width};
+height: ${height};
+margin: ${margin};
+border-radius: ${borderRadius};
+padding: ${padding};
+display: ${display};
+border: ${border}    
 `
-export let LoginStyle = styled.button`
-    width: 321px;
-    height: 58px;
-    margin-left: 29px;
-    border-radius: 20px;
-    background-color: pink;
+export const LoginStyle = styled.button`
+    width: 263.2px;
+    height: 38.2px;
+    margin: ${margin};
+    border-radius: ${borderRadius};
+    padding: ${padding};
+    display: ${display};
+    background-color: ${theme.color.purple};
     color: black;
-    margin-top: 10px;
-    border-radius: 20px;
 `
 
-export let Signin = styled.h1`
-width: 100%;
-height: 100px;
-line-height: 200px;
-text-align: center;
-font-size: 25px;
-color: #FF28CD;
-font-weight: 700;
-
-`
-
-
-export let First = styled.p`
-    color: black;
-    margin-top: 18px;
+export const Signin = styled.h1`
+    font-size: ${theme.fontSize.xlarge};
+    color: ${theme.color.purple};
+    font-weight: bold;
     text-align: center;
+    margin: 55px auto 0;
+
 `
 
-export let Neww = styled.p`
-    color: #FF28CD;
-    margin-top: 15px;
+export const First = styled.span`
+    color: ${theme.color.black};
+    font-size: ${theme.fontSize.large};
+    margin-top: 20px;
+    margin-left: 120px;
+    display: block;
+`
+
+export const Neww = styled.span`
+    color: ${theme.color.purple};
+    margin-top: 10px;
+    margin-left: 20px;
     cursor: pointer;
-    text-align: center;
+    font-size: ${theme.fontSize.large};
+    display: block;
 `
 
-export let ImgStyle = styled.img`
-width: 105px;
-height: 95px;
-margin-left: 135px;
-margin-top: 80px;
-`
+export const ImgStyle = styled.img`
+    width: 105px;
+    height: 95px;
+    margin: 50px auto;
+    display: block;
+    `
