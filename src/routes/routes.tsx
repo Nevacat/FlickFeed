@@ -4,13 +4,14 @@ import Layout from '../components/Layout';
 import LoginForm from '../components/Login/LoginForm';
 import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
+import Feed from '../pages/Feed';
 
 function Routers() {
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index path='login' element={<LoginPage />} />
-        <Route path='/posts' element={<Layout />} />
+        <Route path='/posts' element={<Feed />} />
         <Route path='/register' element={<RegisterPage />} />
       </Route>
     </Routes>

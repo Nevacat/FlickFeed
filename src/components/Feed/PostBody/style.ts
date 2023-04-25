@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Body = styled.div`
+export const PostBody = styled.div`
   margin-left: 10px;
   margin-top: 10px;
 `;

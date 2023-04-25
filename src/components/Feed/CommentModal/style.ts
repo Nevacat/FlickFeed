@@ -4,8 +4,8 @@ import { VscChevronLeft } from 'react-icons/vsc';
 
 export const ModalOverlay = styled.div`
   width: 100%;
-  height: 100%;
-  position: absolute;
+  min-height: 100%;
+  position: fixed;
   left: 0;
   top: 0;
   display: flex;
@@ -31,8 +31,15 @@ export const Modal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px;
+  padding: 20px;
+  font-size: 11px;
+  overflow: auto;
 `;
+
+export const CommentWrapper = styled.div`
+  margin: 10px 0;
+`;
+
 export const StyledRxCross2 = styled(RxCross2)`
   width: 25px;
   height: 25px;

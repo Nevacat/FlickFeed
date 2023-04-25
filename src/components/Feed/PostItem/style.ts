@@ -10,6 +10,7 @@ export const TopSection = styled.div`
   margin: 5px;
   align-items: center;
 `;
+
 export const Reaction = styled.div`
   display: flex;
   height: 30px;
@@ -28,4 +29,5 @@ export const PostImg = styled.div`
   height: 203px;
   border-radius: 15px;
   background-size: cover;
+  background-position: 20% 50%;
 `;

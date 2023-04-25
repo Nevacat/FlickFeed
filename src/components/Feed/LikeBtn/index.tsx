@@ -5,22 +5,17 @@ import { AiOutlineHeart, AiTwotoneHeart } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import { useMutation } from 'react-query';
 import axios from 'axios';
+import { postLikes } from '../../../api/data';
 
 function LikeBtn({ postId }) {
   const [isLiked, setIsLiked] = useState(false);
-
-  const { mutate, isLikeLoading, error } = useMutation(() =>
-    axios.post(`/posts/${postId}`)
+  const { mutate, isLikeLoading, error } = useMutation((post) =>
+    postLikes(post)
   );
 
   const toggleLike = () => {
-    if (isLiked) {
-      setIsLiked(false);
-      mutate();
-    } else {
-      setIsLiked(true);
-      mutate();
-    }
+    mutate(postId);
+    setIsLiked((prev) => !prev);
   };
   return (
     <>
