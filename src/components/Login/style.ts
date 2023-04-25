@@ -14,6 +14,7 @@ export const ContainerStyle = styled.form`
    border-radius: 40.9px;
    background-color: white;
    justify-content: center;
+   align-items: center;
 `
 export const EmailStyle = styled.input`
     width: ${width};
@@ -54,19 +55,21 @@ export const Signin = styled.h1`
 
 `
 
-export const First = styled.p`
+export const First = styled.span`
     color: ${theme.color.black};
-    margin-top: 18px;
-    text-align: center;
     font-size: ${theme.fontSize.large};
+    margin-top: 20px;
+    margin-left: 120px;
+    display: block;
 `
 
-export const Neww = styled.p`
+export const Neww = styled.span`
     color: ${theme.color.purple};
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-left: 20px;
     cursor: pointer;
-    text-align: center;
     font-size: ${theme.fontSize.large};
+    display: block;
 `
 
 export const ImgStyle = styled.img`
