@@ -10,6 +10,9 @@ function DeleteModal() {
     onSuccess: (res) => {
       console.log('mutation Response: ', { res });
     },
+    onError: (res) => {
+      console.log('error', { res });
+    },
   });
   const handleDeletePost = (postId) => {
     sessionStorage.setItem('user', JSON.stringify({ id: postId }));
@@ -17,6 +20,7 @@ function DeleteModal() {
     mutate(postId);
   };
   return (
+    // <Container>
     <S.DeleteModal toggle={isDeleteModal}>
       <S.Warning>
         정말 삭제하시겠습니까? <br />
@@ -35,6 +39,7 @@ function DeleteModal() {
       </S.ButtonGroup>
     </S.DeleteModal>
   );
+  // </Container>
 }
 
 export default DeleteModal;

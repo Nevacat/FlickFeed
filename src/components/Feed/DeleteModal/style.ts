@@ -1,14 +1,17 @@
 import styled, { css } from 'styled-components';
 
+// export const Container = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   position: fixed;
+// `;
 export const DeleteModal = styled.aside`
-  width: 200px;
-  height: 100px;
-  background: red;
-  position: absolute;
-  bottom: -22px;
-  left: -12px;
   width: 100%;
   height: 190px;
+  background: red;
+  position: fixed;
+  bottom: -22px;
+  left: -12px;
   padding: 16px 12px 12px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px 8px 0 0;

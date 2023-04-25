@@ -4,6 +4,7 @@ import { StyledRxCross2 } from './style';
 import { useFeed } from '../../../context/FeedContext';
 import { getComments } from '../../../api/data';
 import { useQuery } from 'react-query';
+import { PostLike, PostComment } from '../PostList/types';
 function CommentModal() {
   const { isCommentModal, setIsCommentModal, commentTargetPostId, posts } =
     useFeed();
@@ -27,7 +28,7 @@ function CommentModal() {
       <S.Modal>
         <div style={{ color: 'white' }}>
           {comments &&
-            comments.map((comment) => (
+            comments.map((comment: PostComment) => (
               <S.CommentWrapper key={comment.id}>
                 <h4 style={{ fontSize: '9px' }}>
                   작성자: {comment.author.username}

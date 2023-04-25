@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { RxCross2 } from 'react-icons/rx';
-import { VscChevronLeft } from 'react-icons/vsc';
 
 export const ModalOverlay = styled.div`
   width: 100%;

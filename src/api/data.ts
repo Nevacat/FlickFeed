@@ -1,5 +1,6 @@
 // API 를 불러오는 곳
 import axios from 'axios';
+import { postCommentsParams } from '../../src/components/Feed/PostList/types';
 import { axiosInstance } from './axios';
 
 export const getUsers = async () => {
@@ -51,21 +52,18 @@ export const getPosts = async () => {
   return res.data;
 };
 
-export const getComments = async (postId) => {
+export const getComments = async (postId: string) => {
   const res = await axiosInstance.get(`/posts/${postId}`);
   return res.data;
 };
 
-export const postLikes = async (postId) => {
+export const postLikes = async (postId: string) => {
   const res = await axiosInstance.post(`/posts/${postId}`);
   return res.data;
 };
 
-export const deletePost = async (postId) => {
-  const res = await axios.delete(`/posts/${postId}`, {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
-  });
+export const deletePost = async (postId: string) => {
+  const res = await axiosInstance.delete(`/posts/${postId}`);
   return res.data;
 };
 
