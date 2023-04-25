@@ -1,90 +1,131 @@
 import styled from "styled-components"
+import theme from "../../styles/theme"
 
-export let ContainerStyle = styled.form`
-width: 375px;
-height: 667px;
-marginTop: -19px;
-marginLeft: -13px;
-borderRadius: 40.9px;
+const width = "240px"
+const height = "15px"
+const margin = "12px auto 0"
+const borderRadius = "20px"
+const padding = "10px 10px"
+const display = "block"
+const border = "2px solid navy"
+const color = theme.color.navy
+
+export const ContainerStyle = styled.form`
+border-radius: 40.9px;
 backgroundColor: white;
+justify-content: center;
+align-items: center;
 `
 
-export let EmailStyle = styled.input`
-    width: 300px;
-    height: 24px;
-    margin-left: 10px;
-    margin-top: 24px;
-    border-radius: 20px;
-    padding: 10px 10px;
+export const EmailStyle = styled.input`
+    width: ${width};
+    height: ${height};
+    margin: ${margin};
+    border-radius: ${borderRadius};
+    padding: ${padding};
+    display: ${display};
+    border: ${border};
+    ::placeholder {
+        color: ${color}; 
+    }
+`;
+
+export const PwStyle = styled.input`
+    width: ${width};
+    height: ${height};
+    margin: ${margin};
+    border-radius: ${borderRadius};
+    padding: ${padding};
+    display: ${display};
+    border: ${border};
+    ::placeholder {
+        color: ${color}; 
+    }
 `
 
-export let PwStyle = styled.input`
-    width: 300px;
-    height: 24px;
-    margin-left: 10px;
-    margin-top: 12px;
-    border-radius: 20px;
-    padding: 10px 10px;
+export const UsernameStyle = styled.input`
+width: ${width};
+height: ${height};
+margin: ${margin};
+border-radius: ${borderRadius};
+padding: ${padding};
+display: ${display};
+border: ${border};
+::placeholder {
+    color: ${color}; 
+}
 `
 
-export let UsernameStyle = styled.input`
-    width: 300px;
-    height: 24px;
-    margin-left: 10px;
-    margin-top: 12px;
-    border-radius: 20px;
-    padding: 10px 10px;
-`
-
-export let SignupStyle = styled.button`
-    margin-top: 10px;
-    width: 322px;
-    height: 50px;
-    margin-left: 10px;
-    border-radius: 20px;
-    background-color: pink;
+export const SignupStyle = styled.button`
+    width: 263.2px;
+    height: 38.2px;
+    margin: ${margin};
+    border-radius:${borderRadius};
+    display: ${display};
+    background-color: ${theme.color.purple};
     color: black;
 `
 
-export let Signup = styled.h1`
-    margin-left: -35px;
-    margin-top: 55px;
-    font-size: 25px;
-    color: #FF28CD;
+export const Signup = styled.h1`
+    font-size: ${theme.fontSize.xlarge};
+    color: ${theme.color.purple};
     font-weight: bold;
     text-align: center;
+    margin: 55px auto 0;
 `
 
-export let ImgStyle = styled.img`
-    width: 105px;
-    height: 95px;
-    margin-left: 115px;
-    margin-top: 60px;
+export const ImgStyle = styled.img`
+    width: 85px;
+    height: 85px;
+    margin: 30px auto;
+    display: block;
+    border: 2px solid ${theme.color.navy};
+    border-radius: 50px;
 `
 
-export let Warning = styled.p`
-    margin-left: 25px;
-    margin-top: 10px;
+export const Warning = styled.p`
+    text-align: center;
+    margin: 20px auto 0;
+    color: ${theme.color.navy};
 `
 
-export let PasswordConfirm = styled.input`
-    width: 300px;
-    height: 24px;
-    margin-left: 10px;
-    margin-top: 12px;
-    border-radius: 20px;
-    padding: 10px 10px;
+export const PasswordConfirm = styled.input`
+width: ${width};
+height: ${height};
+margin: ${margin};
+border-radius: ${borderRadius};
+padding: ${padding};
+display: ${display};
+border: ${border};
+::placeholder {
+    color: ${color}; 
+}
 `
 
-export let FileSubmit = styled.input`
-    margin-left: 85px;
-    margin-top: 10px;
+export const FileSubmit = styled.input`
+    margin-top: 5px;
+    margin-left: 0px;
 `
-export let StatusStyle = styled.input`
-width: 300px;
-height: 24px;
-margin-left: 10px;
-margin-top: 12px;
-border-radius: 20px;
-padding: 10px 10px;
+export const StatusStyle = styled.input`
+    width: ${width};
+    height: ${height};
+    margin: ${margin};
+    margin-bottom: 25px;
+    border-radius: ${borderRadius};
+    padding: ${padding};
+    display: ${display};
+    border: ${border};
+    ::placeholder {
+        color: ${color}; 
+    }
+`
+export const Lab = styled.label`
+    display: flex;
+    margin-left: 50px;
+`
+export const SpanEl = styled.span`
+    flex-wrap: flex;
+    white-space: nowrap;
+    margin-top: 9px;
+    color: ${color}
 `
