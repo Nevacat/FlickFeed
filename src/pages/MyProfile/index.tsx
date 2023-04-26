@@ -1,20 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Background, UserInfo, CardList } from '../../components/MyProfile/';
 import { useQuery } from 'react-query';
 import { getPostsByUser } from '../../api/data';
 
 function MyProfilePage() {
-  const { data: posts } = useQuery(['posts', 'me'], getPostsByUser, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
-  });
+  const { data: posts } = useQuery(['posts', 'me'], getPostsByUser);
+
+  const memoizedPosts = useMemo(() => posts, [posts]);
 
   return (
     <main style={{ position: 'relative' }}>
       <Background />
       <UserInfo />
-      <CardList posts={posts} />
+      <CardList posts={memoizedPosts} />
     </main>
   );
 }

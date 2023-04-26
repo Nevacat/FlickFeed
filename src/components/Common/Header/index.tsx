@@ -10,7 +10,6 @@ function index() {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   const logoutHandler = async () => {
     setIsLogoutModalOpen(true);
@@ -18,7 +17,7 @@ function index() {
 
   return (
     <S.Header>
-      <S.BackButton location={location} onClick={() => navigate(-1)}>
+      <S.BackButton location={location} onClick={() => navigate('/posts')}>
         <VscChevronLeft />
       </S.BackButton>
       <S.LogoutButton location={location} onClick={logoutHandler}>
