@@ -7,7 +7,7 @@ export const UserPostModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 47%;
+  width: 375px;
   height: 98%;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 40.9px;
