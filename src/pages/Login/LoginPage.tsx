@@ -17,7 +17,7 @@ function LoginPage(){
         }
       },
       onError: (err: AxiosError) => {
-        console.log(err);
+        console.error(err);
       },
     });
     return (

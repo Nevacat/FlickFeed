@@ -18,6 +18,7 @@ export const Message = styled.p`
 `;
 
 export const DefaultButton = styled.button`
+  width: 80px;
   padding: 6px 12px;
   color: ${({ theme }) => theme.color.white};
   border: none;
@@ -27,6 +28,7 @@ export const DefaultButton = styled.button`
 `;
 
 export const LogoutButton = styled(DefaultButton)`
+  width: 80px;
   margin-right: 10px;
   background-color: ${({ theme }) => theme.color.skyblue};
 `;

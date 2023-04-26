@@ -21,7 +21,7 @@ export const DeleteModal = styled.aside<DeleModalProps>`
     css`
       opacity: 1;
       visibility: visible;
-      z-index: 4;
+      z-index: 10;
     `};
 `;
 

@@ -59,4 +59,5 @@ export const LogoutButton = styled.button<IHeader>`
   font-size: 20px;
   color: ${({ theme }) => theme.color.navy};
   background-color: transparent;
+  padding: 1px 8px;
 `;

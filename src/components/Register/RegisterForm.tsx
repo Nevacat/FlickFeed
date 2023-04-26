@@ -41,7 +41,6 @@ function RegisterForm({ mutate }: RegisterFormProps) {
     if(userInput.password == userInput.passwordConfirm){
       e.preventDefault()
       mutate(userInput)
-      console.log(userInput)
       alert("All Signed Up!")
       setUserInput({email: '', password: '', username: '', passwordConfirm: '', userImg: null, userInfo: ''})
       navigate("/login")

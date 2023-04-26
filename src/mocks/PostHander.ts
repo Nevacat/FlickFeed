@@ -31,7 +31,6 @@ export const PostHandler = [
       comment:[],
       likes:[]
     }
-    console.log({ body });
     const payload = [...Posts, newPost];
     return res(ctx.status(201), ctx.json({ payload }));
   }),

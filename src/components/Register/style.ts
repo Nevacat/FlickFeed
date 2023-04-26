@@ -7,12 +7,11 @@ const margin = "12px auto 0"
 const borderRadius = "20px"
 const padding = "10px 10px"
 const display = "block"
-const border = "2px solid navy"
+const border = "1px solid navy"
 const color = theme.color.navy
 
 export const ContainerStyle = styled.form`
 border-radius: 40.9px;
-backgroundColor: white;
 justify-content: center;
 align-items: center;
 `
@@ -64,10 +63,11 @@ export const SignupStyle = styled.button`
     display: ${display};
     background-color: ${theme.color.purple};
     color: black;
+    border:none;
 `
 
 export const Signup = styled.h1`
-    font-size: ${theme.fontSize.xlarge};
+    font-size: 28px;
     color: ${theme.color.purple};
     font-weight: bold;
     text-align: center;

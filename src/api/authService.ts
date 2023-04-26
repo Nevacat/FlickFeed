@@ -18,7 +18,7 @@ export const register = async (user: RegisterRequest) => {
   const { data } = await axiosImgInstance.post<AuthResponse>('/auth/register', user)
     return data
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -27,6 +27,6 @@ export const verify = async () => {
     const { data } = await axiosInstance.post<UserPayload>('/auth/me');
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

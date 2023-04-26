@@ -36,7 +36,7 @@ export const Modal = styled.div`
 `;
 
 export const Author = styled.h2`
-  fontsize: 9px;
+  font-size: 9px;
 `;
 
 export const CommentWrapper = styled.div`
