@@ -11,12 +11,20 @@ export interface RegisterFormProps {
 }
 
 function RegisterForm({ mutate }: RegisterFormProps) {
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [imageUrl, setImageUrl] = useState<string>('')
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [userInput, setUserInput] = useState<RegisterRequest>({ email: '', password: '' , username:'', passwordConfirm: '',selectedFile: null , sangTae:''})
+  const [userImg, setUserImg] = useState<File | null>(null)
+  const [userInput, setUserInput] = useState<RegisterRequest>({ email: '', password: '' , username:'', passwordConfirm: '',userImg: null , userInfo:''})
+  
+  let formData = new FormData()
+  formData.append("email", userInput.email)
+  formData.append("password", userInput.password)
+  formData.append("username", userInput.username)
+  userInput.userInfo ? formData.append("userinfo", userInput.userInfo): null
+  userInput.userImg ? formData.append("userimg", userInput.userImg): null
+  
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUserInput({ ...userInput, [name]: value })
@@ -27,7 +35,7 @@ function RegisterForm({ mutate }: RegisterFormProps) {
       mutate(userInput)
       console.log(userInput)
       alert("All Signed Up!")
-      setUserInput({email: '', password: '', username: '', passwordConfirm: '', selectedFile: null, sangTae: ''})
+      setUserInput({email: '', password: '', username: '', passwordConfirm: '', userImg: null, userInfo: ''})
       navigate("/login")
     }else{
       alert("비밀번호를 확인해주세요!")
@@ -37,7 +45,7 @@ function RegisterForm({ mutate }: RegisterFormProps) {
     const file = event.target.files && event.target.files[0];
     setUserInput(prevState => ({
       ...prevState,
-      selectedFile: file || null
+      userImg: file || null
     }))
     if (file) {
       const reader = new FileReader()
@@ -58,7 +66,7 @@ function RegisterForm({ mutate }: RegisterFormProps) {
       <EmailStyle name="email" type="email" value={userInput.email} onChange={onChange} className="email" placeholder="이메일" required/>
       </div>
       <div>
-      <PwStyle name="password" type="password" value={userInput.password} onChange={onChange} className="password" placeholder="비밀번호" pattern=".{8,}" required/>
+      <PwStyle name="password" type="password" value={userInput.password} onChange={onChange} className="password" placeholder="비밀번호(8자리 이상)" pattern=".{8,}" required/>
       </div>
       <div>
         <PasswordConfirm name="passwordConfirm" type="password" value={userInput.passwordConfirm} onChange={onChange} className="passwordConfirm" placeholder="비밀번호 확인" pattern=".{8,}" required/>
@@ -67,7 +75,7 @@ function RegisterForm({ mutate }: RegisterFormProps) {
         <UsernameStyle type="text" name="username" placeholder="유저네임" value={userInput.username} onChange={onChange} className="username" required/>
       </div>
       <div>
-        <StatusStyle type="text" name="sangTae" placeholder="상태메시지" value={userInput.sangTae} onChange={onChange}/>
+        <StatusStyle type="text" name="userInfo" placeholder="상태메시지" value={userInput.userInfo} onChange={onChange}/>
       </div>
       <div>
         <Lab htmlFor="imageInput">

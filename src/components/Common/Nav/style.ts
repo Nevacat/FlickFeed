@@ -14,6 +14,7 @@ export const Gnb = styled.nav`
   border-bottom-left-radius: 40.9px;
   border-bottom-right-radius: 40.9px;
   overflow: hidden;
+  z-index:1;
 `;
 
 export const StyledLink = styled(Link)`

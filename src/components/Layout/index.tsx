@@ -6,16 +6,17 @@ import { Header } from '../MyProfile';
 
 function Layout() {
   const location = useLocation();
-  let show = true;
-  if (location.pathname === '/register' || location.pathname === '/login') {
-    show = false;
-  }
+
 
   return (
-    <S.Layout show={show}>
-      <Header />
+    <S.Layout>
+      {!(location.pathname === '/register' || location.pathname === '/') && 
+      <>
+        <Nav/>
+        <Header/>
+      </>
+      }
       <Outlet />
-      <Nav />
     </S.Layout>
   );
 }

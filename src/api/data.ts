@@ -1,9 +1,7 @@
-// API 를 불러오는 곳
-
+import { PostCreate } from '../interface/post';
 import { UserInput } from '../interface/user';
-import { axiosInstance } from './axios';
+import { axiosImgInstance, axiosInstance } from './axios';
 import axios from 'axios';
-import { postCommentsParams } from '../../src/components/Feed/PostList/types';
 
 export const getUser = async () => {
   const response = await axiosInstance.post('/auth/me');
@@ -87,4 +85,14 @@ export const deletePost = async (postId: string) => {
 export const postComments = async ({ postId, content }) => {
   const res = await axiosInstance.post('/comment', { postId, content });
   return res.data;
+};
+
+export const createPost = async (formData:FormData) => {
+  const postImg = formData.get('postImg')
+  const place = formData.get('place')
+  const content = formData.get('content');
+  
+  const res = await axiosImgInstance.post('/posts', {postImg, content, place})
+  
+  return res.data
 };

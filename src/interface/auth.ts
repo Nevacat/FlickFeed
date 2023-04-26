@@ -6,8 +6,8 @@ export interface LoginRequest {
   export interface RegisterRequest extends LoginRequest {
     username: string,
     passwordConfirm: string,
-    selectedFile: File | null,
-    sangTae: string
+    userImg?: File | null,
+    userInfo?: string
   }
   
   export interface UserPayload {
