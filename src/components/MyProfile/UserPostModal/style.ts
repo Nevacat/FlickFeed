@@ -8,7 +8,7 @@ export const UserPostModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   width: 375px;
-  height: 98%;
+  height: 670px;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 40.9px;
   overflow: hidden;
@@ -17,8 +17,8 @@ export const UserPostModalOverlay = styled.div`
 `;
 
 export const UserPostModal = styled.div`
-  width: 80%;
-  height: 30%;
+  width: 300px;
+  height: 200px;
 `;
 
 export const UserPostModalImage = styled.img`
