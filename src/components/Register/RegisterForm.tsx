@@ -11,7 +11,7 @@ export interface RegisterFormProps {
 }
 
 function RegisterForm({ mutate }: RegisterFormProps) {
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [imageUrl, setImageUrl] = useState<string>('')
 
