@@ -6,11 +6,11 @@ import * as S from './style';
 function index() {
   return (
     <S.Gnb>
-      <S.StyledLink to="/">
+      <S.StyledLink to="/posts">
         <RiHome5Fill />
       </S.StyledLink>
 
-      <S.StyledLink to="/">
+      <S.StyledLink to="/posts">
         <AiOutlinePlusCircle />
       </S.StyledLink>
 

@@ -10,6 +10,7 @@ export const TopSection = styled.div`
   margin: 5px;
   align-items: center;
 `;
+
 export const Reaction = styled.div`
   display: flex;
   height: 30px;
@@ -22,4 +23,11 @@ export const StyledFaRegComment = styled(FaRegComment)`
   height: 21px;
   margin-left: 20px;
   color: #000;
+  cursor: pointer;
+`;
+export const PostImg = styled.div`
+  height: 203px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: 20% 50%;
 `;

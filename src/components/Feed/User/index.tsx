@@ -2,14 +2,25 @@ import React from 'react';
 import * as S from './style';
 import UserImg from '../UserImg';
 import { useQuery } from 'react-query';
+import { getUsersImages, getUserData } from '../../../api/data';
 
 function User({ user, avatarSize }: any) {
+  const {
+    isLoading,
+    data: userData,
+    error,
+  } = useQuery('usersData', getUserData);
+  if (isLoading) {
+    return <div>로딩중...</div>;
+  }
+
+  const currentUserData = userData.find((data: any) => data.id === user.id);
+
   return (
     <S.User>
-      <S.UserImgWrapper>
-        {' '}
-        <UserImg size={avatarSize} />{' '}
-      </S.UserImgWrapper>
+      {' '}
+      <UserImg size={avatarSize} url={currentUserData?.userImg} />
+      <S.UserName>{user.username}</S.UserName>
     </S.User>
   );
 }
