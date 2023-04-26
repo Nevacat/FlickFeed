@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Background, UserInfo, CardList } from '../../components/MyProfile/';
 import { useQuery } from 'react-query';
 import { getPostsByUser } from '../../api/data';
@@ -10,11 +10,13 @@ function MyProfilePage() {
     },
   });
 
+  const memoizedPosts = useMemo(() => posts, [posts]);
+
   return (
     <main style={{ position: 'relative' }}>
       <Background />
       <UserInfo />
-      <CardList posts={posts} />
+      <CardList posts={memoizedPosts} />
     </main>
   );
 }

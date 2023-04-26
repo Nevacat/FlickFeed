@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import * as S from './style';
 import { axiosInstance } from '../../../api/axios';
 import { removeCookie } from '../../../utils/cookies';
@@ -11,12 +11,15 @@ type LogoutConfirmModalProps = {
 function index({ setIsLogoutModalOpen }: LogoutConfirmModalProps) {
   const navigate = useNavigate();
 
-  const logoutHandler = async () => {
-    const response = await axiosInstance.post('/auth/logout');
-    removeCookie('accessToken');
-    navigate('/');
-    return response.data;
-  };
+  const logoutHandler = useMemo(
+    () => async () => {
+      const response = await axiosInstance.post('/auth/logout');
+      removeCookie('accessToken');
+      navigate('/');
+      return response.data;
+    },
+    [navigate]
+  );
 
   return (
     <S.LogoutModal className="logout-modal">

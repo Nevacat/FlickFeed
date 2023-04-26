@@ -18,7 +18,7 @@ function index() {
 
   return (
     <S.Header>
-      <S.BackButton location={location} onClick={() => navigate(-1)}>
+      <S.BackButton location={location} onClick={() => navigate('/posts')}>
         <VscChevronLeft />
       </S.BackButton>
       <S.LogoutButton location={location} onClick={logoutHandler}>
