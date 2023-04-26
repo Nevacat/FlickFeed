@@ -1,11 +1,11 @@
 import { getCookie } from '../utils/cookies';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
-const getAxiosInstance = () => {
-  const config: AxiosRequestConfig = {
+const getAxiosInstance = (ContentType:string) => {
+  const config: AxiosRequestConfig = { 
     baseURL: import.meta.env.VITE_SERVER_URL,
     headers: {
-      'Content-type': 'application/json',
+      'Content-type': ContentType,
     },
     withCredentials: true,
   };
@@ -25,4 +25,5 @@ const getAxiosInstance = () => {
   return instance;
 };
 
-export const axiosInstance = getAxiosInstance();
+export const axiosInstance = getAxiosInstance('application/json')
+export const axiosImgInstance = getAxiosInstance('multipart/form-data')
