@@ -1,10 +1,5 @@
-import {
-  AuthResponse,
-  LoginRequest,
-  RegisterRequest,
-  UserPayload,
-} from '../interface/auth';
-import { axiosInstance } from './axios';
+import { AuthResponse, LoginRequest, RegisterRequest, UserPayload } from '../interface/auth'
+import { axiosImgInstance, axiosInstance } from './axios'
 
 export const login = async (user: LoginRequest) => {
   try {
@@ -19,12 +14,9 @@ export const login = async (user: LoginRequest) => {
 };
 
 export const register = async (user: RegisterRequest) => {
-  try {
-    const { data } = await axiosInstance.post<AuthResponse>(
-      '/auth/register',
-      user
-    );
-    return data;
+  try{ 
+  const { data } = await axiosImgInstance.post<AuthResponse>('/auth/register', user)
+    return data
   } catch (error) {
     console.log(error);
   }

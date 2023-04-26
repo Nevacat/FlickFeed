@@ -10,7 +10,7 @@ function index() {
         <RiHome5Fill />
       </S.StyledLink>
 
-      <S.StyledLink to="/posts">
+      <S.StyledLink to="/createPost">
         <AiOutlinePlusCircle />
       </S.StyledLink>
 

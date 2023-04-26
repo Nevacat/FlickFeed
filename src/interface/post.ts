@@ -27,3 +27,9 @@ interface PostUser {
   id: string;
   username: string;
 }
+
+export interface PostCreate {
+  postImg: File | null;
+  place?: string;
+  content: string;
+}

@@ -7,17 +7,19 @@ import RegisterPage from '../pages/Register/RegisterPage';
 import MyProfilePage from '../pages/MyProfile';
 import FeedPage from '../pages/Feed';
 import ProtectedRouter from './ProtectedRouter';
+import CreatePost from '../pages/CreatePost';
 
 function Routers() {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
-      <Route element={<ProtectedRouter />}>
-        <Route element={<Layout />}>
-          <Route path="myProfile" element={<MyProfilePage />} />
-          <Route path="posts" element={<FeedPage />} />
+        <Route element={<ProtectedRouter />}>
+          <Route path="/myProfile" element={<MyProfilePage />} />
+          <Route path="/posts" element={<FeedPage />} />
+          <Route path="/createPost" element={<CreatePost/>} />"
         </Route>
       </Route>
     </Routes>
