@@ -16,17 +16,6 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  // const testPost = async () => {
-  //   const result = await axios.post('/auth/login',{
-  //     email:"test@naver.com",
-  //     password:"test1234"
-  //   });
-  //   console.log({ result: result.data });
-  // };
-
-  // useEffect(() => {
-  //   testPost();
-  // }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
