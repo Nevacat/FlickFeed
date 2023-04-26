@@ -9,9 +9,9 @@ from {
 
 export const DeleteModal = styled.aside`
   width: 310px;
-  height: 190px;
+  height: 130px;
   position: fixed;
-  bottom: -22px;
+  bottom: 22px;
   padding: 16px 12px 12px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px 8px 0 0;
@@ -26,7 +26,7 @@ export const DeleteModal = styled.aside`
     css`
       opacity: 1;
       visibility: visible;
-      z-index: 10;
+      z-index: 4;
     `};
 `;
 

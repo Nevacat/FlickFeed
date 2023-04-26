@@ -7,11 +7,11 @@ export const PostBody = styled.div`
 
 export const Form = styled.form`
   position: relative;
-  height: 100px;
+  height: 80px;
 `;
 
 export const Content = styled.div`
-  height: 40px;
+  height: 20px;
   overflow-y: hidden;
 `;
 export const CommentWrapper = styled.div`

@@ -6,7 +6,6 @@ import { StyledEditBtn } from './style';
 import { useFeed } from '../../../context/FeedContext';
 import { PostComment } from '../PostList/types';
 function PostHeader({ post }: PostComment) {
-  console.log(post);
   const { setIsDeleteModal, setDeleteTargetPostId } = useFeed();
   return (
     <S.PostHeader>
