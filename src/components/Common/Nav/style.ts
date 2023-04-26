@@ -23,6 +23,7 @@ export const StyledLink = styled(Link)`
   width: 100%;
   height: 100%;
   font-size: 20px;
+  color: ${({ theme }) => theme.color.navy};
   border-top: 1px solid ${({ theme }) => theme.color.gray};
 
   &:active {

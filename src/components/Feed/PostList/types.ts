@@ -15,3 +15,19 @@ export type Like = {
   userId: number;
   user: User;
 };
+
+export type PostLike = {
+  Id: string;
+  user: User;
+};
+
+export type PostComment = {
+  id: string;
+  content: string;
+  author: User;
+};
+
+export type PostCommentsParams = {
+  postId: string;
+  content: string;
+};

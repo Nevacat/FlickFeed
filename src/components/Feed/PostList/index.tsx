@@ -1,28 +1,29 @@
 import React from 'react';
 import PostItem from '../../Feed/PostItem';
 import { useQuery } from 'react-query';
-import axios from 'axios';
+import { getPosts } from '../../../api/data';
 import { Post } from './types';
 import * as S from './style';
+import { useFeed } from '../../../context/FeedContext';
+import { getUsers, getUsersImages, getUserData } from '../../../api/data';
 function PostList() {
-  const getPosts = async () => {
-    const res = await axios.get('/posts');
-    return res.data;
-  };
-  const { isLoading, data: posts, error } = useQuery('posts', getPosts);
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const { posts } = useFeed();
+  const {
+    isLoading,
+    data: postImages,
+    error,
+  } = useQuery('posts', getPosts, {
+    select: (posts) => posts.map((post) => post.id),
+  });
 
   return (
     <S.PostList>
-      {posts.map((post: Post) => (
-        <div key={post.id}>
-          <h1>
+      {posts &&
+        posts.map((post: Post) => (
+          <div key={post.id}>
             <PostItem post={post} />
-          </h1>
-        </div>
-      ))}
+          </div>
+        ))}
     </S.PostList>
   );
 }

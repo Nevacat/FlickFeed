@@ -2,18 +2,37 @@ import React from 'react';
 import { VscChevronLeft } from 'react-icons/vsc';
 import { AiFillGithub } from 'react-icons/ai';
 import * as S from './style';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { BiLogOut } from 'react-icons/bi';
+import { axiosInstance } from '../../../api/axios';
+import { removeCookie } from '../../../utils/cookies';
 
 function index() {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+
+  const logoutHandler = async () => {
+    const response = await axiosInstance.post('/auth/logout');
+    removeCookie('accessToken');
+    navigate('/');
+    return response.data;
+  };
 
   return (
     <S.Header>
-      <S.Button onClick={() => navigate(-1)}>
+      <S.BackButton location={location} onClick={() => navigate(-1)}>
         <VscChevronLeft />
-      </S.Button>
+      </S.BackButton>
+      <S.LogoutButton location={location} onClick={logoutHandler}>
+        <BiLogOut />
+      </S.LogoutButton>
 
-      <S.StyledLink to="https://github.com/Nevacat/FlickFeed">
+      <S.Logo location={location}>
+        <S.Img src="images/FlickFeed.png" alt="FilckFeed" />
+      </S.Logo>
+
+      <S.StyledLink href="https://github.com/Nevacat/FlickFeed">
         <AiFillGithub />
       </S.StyledLink>
     </S.Header>
