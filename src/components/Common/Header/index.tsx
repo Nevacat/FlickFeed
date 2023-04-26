@@ -10,7 +10,6 @@ function index() {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   const logoutHandler = async () => {
     setIsLogoutModalOpen(true);

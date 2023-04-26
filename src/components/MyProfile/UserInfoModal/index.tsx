@@ -25,12 +25,8 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
 
   const { mutate } = useMutation(editUser, {
     onSuccess: (data) => {
-      console.log(data);
       queryClient.setQueryData(['user'], data);
       window.location.reload();
-    },
-    onError: (error) => {
-      console.log(error);
     },
   });
 

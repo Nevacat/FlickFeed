@@ -4,11 +4,7 @@ import { useQuery } from 'react-query';
 import { getPostsByUser } from '../../api/data';
 
 function MyProfilePage() {
-  const { data: posts } = useQuery(['posts', 'me'], getPostsByUser, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
-  });
+  const { data: posts } = useQuery(['posts', 'me'], getPostsByUser);
 
   const memoizedPosts = useMemo(() => posts, [posts]);
 
