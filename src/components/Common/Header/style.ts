@@ -44,7 +44,7 @@ export const StyledLink = styled.a`
 
 export const BackButton = styled(StyledLink)`
   display: ${({ location }: IHeader) =>
-    location.pathname === '/myProfile' ? 'flex' : 'none'};
+    location.pathname === '/myProfile' || location.pathname === '/createPost' ? 'flex' : 'none'};
   outline: none;
   border: none;
 `;
