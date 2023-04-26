@@ -35,8 +35,13 @@ export const Modal = styled.div`
   overflow: auto;
 `;
 
+export const Author = styled.h2`
+  fontsize: 9px;
+`;
+
 export const CommentWrapper = styled.div`
   margin: 10px 0;
+  color: white;
 `;
 
 export const StyledRxCross2 = styled(RxCross2)`

@@ -1,16 +1,22 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+import React from 'react';
+import { useQueryClient } from 'react-query';
 import * as S from './style';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { postComments } from '../../../api/data';
+import { Post } from '../../../interface/post';
 
-function PostBody({ postId, postContent }) {
+export interface PostBodyProps {
+  postId: string;
+  postContent: string;
+}
+
+function PostBody({ postId, postContent }: PostBodyProps) {
   const queryClient = useQueryClient();
   const [comment, setComment] = useState('');
   const { mutate, isLoading } = useMutation(
-    (formData) =>
+    (formData: { postId: string; comment: string }) =>
       postComments({ postId: formData.postId, content: formData.comment }),
     {
       onSuccess: () => {
@@ -20,7 +26,7 @@ function PostBody({ postId, postContent }) {
     }
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     mutate({ postId, comment });
   };

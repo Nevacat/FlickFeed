@@ -1,20 +1,10 @@
 import React from 'react';
 import PostItem from '../../Feed/PostItem';
-import { useQuery } from 'react-query';
-import { getPosts } from '../../../api/data';
-import { Post } from './types';
 import * as S from './style';
 import { useFeed } from '../../../context/FeedContext';
-import { getUsers, getUsersImages, getUserData } from '../../../api/data';
+import { Post } from '../../../interface/post';
 function PostList() {
   const { posts } = useFeed();
-  const {
-    isLoading,
-    data: postImages,
-    error,
-  } = useQuery('posts', getPosts, {
-    select: (posts) => posts.map((post) => post.id),
-  });
 
   return (
     <S.PostList>

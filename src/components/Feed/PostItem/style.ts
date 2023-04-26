@@ -3,7 +3,7 @@ import { FaRegComment } from 'react-icons/fa';
 
 export const PostItem = styled.div`
   margin: 15px;
-  overflow: hidden;
+  overflow: visible;
 `;
 export const TopSection = styled.div`
   display: flex;

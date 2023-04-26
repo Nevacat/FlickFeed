@@ -2,19 +2,28 @@ import React from 'react';
 import * as S from './style';
 import UserImg from '../UserImg';
 import { useQuery } from 'react-query';
-import { getUsersImages, getUserData } from '../../../api/data';
+import { PostAuthor } from '../../../interface/post';
+import { getUserData } from '../../../api/data';
+import { UserDetail } from '../../../interface/user';
 
-function User({ user, avatarSize }: any) {
+export interface UserProps {
+  user: UserDetail;
+  avatarSize?: 'small';
+}
+
+function User({ user, avatarSize }: UserProps) {
   const {
-    isLoading,
     data: userData,
+    isLoading,
     error,
   } = useQuery('usersData', getUserData);
   if (isLoading) {
     return <div>로딩중...</div>;
   }
 
-  const currentUserData = userData.find((data: any) => data.id === user.id);
+  const currentUserData = userData.find(
+    (data: PostAuthor) => data.id === user.id
+  );
 
   return (
     <S.User>

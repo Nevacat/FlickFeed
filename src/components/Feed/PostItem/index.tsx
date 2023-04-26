@@ -7,14 +7,25 @@ import * as S from './style';
 import { StyledFaRegComment } from './style';
 import { useFeed } from '../../../context/FeedContext';
 import { useQuery } from 'react-query';
-import { getPost, getPosts } from '../../../api/data';
+import { getPosts } from '../../../api/data';
+import { Post } from '../../../interface/post';
+interface PostItemProp {
+  post: Post;
+}
 
-function PostItem({ post }) {
+function PostItem({ post }: PostItemProp) {
+  console.log(post);
   const { setIsCommentModal, setCommentTargetPostId } = useFeed();
-  const { isContentLoading, data: postContents } = useQuery('posts', getPosts);
+  const {
+    data: postContents,
+    isLoading: isContentLoading,
+    isError,
+  } = useQuery('posts', getPosts);
+
   if (isContentLoading) {
     return <div>로딩중입니다</div>;
   }
+
   return (
     <S.PostItem>
       <S.TopSection>

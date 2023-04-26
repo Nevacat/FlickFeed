@@ -2,9 +2,9 @@ import React from 'react';
 import User from '../User';
 import * as S from './style';
 import { useQuery } from 'react-query';
-import { getUsers, getUsersImages, getUserData } from '../../../api/data';
+import { getUsers, getUserData } from '../../../api/data';
 import MultiCarousel from '../../MultiCarousel';
-
+import { PostAuthor } from '../../../interface/post';
 function UsersCarousel() {
   const {
     isLoading,
@@ -23,8 +23,10 @@ function UsersCarousel() {
     return <div>로딩중...</div>;
   }
 
-  const userList = users.map((user) => {
-    const matchingUserData = userData.find((data) => data.id === user.id);
+  const userList = users.map((user: PostAuthor) => {
+    const matchingUserData = userData.find(
+      (data: PostAuthor) => data.id === user.id
+    );
     return { ...user, ...matchingUserData };
   });
   return (
@@ -32,7 +34,7 @@ function UsersCarousel() {
       <MultiCarousel swipeable arrows={false}>
         {userList.map((user: any) => (
           <div key={user.id}>
-            <User user={user} avatarSize='big' />
+            <User user={user} />
           </div>
         ))}
       </MultiCarousel>{' '}

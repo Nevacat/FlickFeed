@@ -1,17 +1,12 @@
 import styled, { css } from 'styled-components';
-
-// export const Container = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   position: fixed;
-// `;
-export const DeleteModal = styled.aside`
-  width: 100%;
-  height: 190px;
-  background: red;
+interface DeleModalProps {
+  toggle: boolean;
+}
+export const DeleteModal = styled.aside<DeleModalProps>`
+  width: 310px;
+  height: 130px;
   position: fixed;
-  bottom: -22px;
-  left: -12px;
+  bottom: 22px;
   padding: 16px 12px 12px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px 8px 0 0;
@@ -20,16 +15,13 @@ export const DeleteModal = styled.aside`
   opacity: 0;
   visibility: hidden;
   z-index: 3;
-  transform: translate3d(0, 100%, 0);
-  transition: all 200ms ease-in-out;
 
-  ${({ toggle }: any) =>
+  ${({ toggle }) =>
     toggle &&
     css`
       opacity: 1;
       visibility: visible;
-      z-index: 10;
-      transform: translate3d(0, 0, 0);
+      z-index: 4;
     `};
 `;
 
@@ -81,4 +73,5 @@ export const SubmitButton = styled(DefaultButton)`
 `;
 export const Warning = styled.div`
   text-align: center;
+  margin-bottom: 10px;
 `;
