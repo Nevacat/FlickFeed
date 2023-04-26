@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Feed = styled.div`
-  /* height: 600px; */
   position: absolute;
   top: 80px;
   bottom: 50px;

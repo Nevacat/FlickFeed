@@ -5,14 +5,20 @@ import { IconContext } from 'react-icons';
 import { useMutation } from 'react-query';
 import { postLikes } from '../../../api/data';
 
-function LikeBtn({ postId }) {
+interface LikeBtnProps {
+  postId: string;
+}
+
+function LikeBtn({ postId }: LikeBtnProps) {
   const [isLiked, setIsLiked] = useState(() => {
     const likeStatus = localStorage.getItem(`post-${postId}`);
     return likeStatus ? JSON.parse(likeStatus) : false;
   });
-  const { mutate, isLikeLoading, error } = useMutation((post) =>
-    postLikes(post)
-  );
+  const {
+    mutate,
+    isLoading: isLikeLoading,
+    error,
+  } = useMutation((post: string) => postLikes(post));
 
   useEffect(() => {
     localStorage.setItem(`post-${postId}`, JSON.stringify(isLiked));

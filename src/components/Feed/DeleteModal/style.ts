@@ -1,13 +1,8 @@
-import styled, { css, keyframes } from 'styled-components';
-
-const slideUp = keyframes`
-from {
-  opacity:0
-} to{
-  opacity:1
-}`;
-
-export const DeleteModal = styled.aside`
+import styled, { css } from 'styled-components';
+interface DeleModalProps {
+  toggle: boolean;
+}
+export const DeleteModal = styled.aside<DeleModalProps>`
   width: 310px;
   height: 130px;
   position: fixed;
@@ -21,7 +16,7 @@ export const DeleteModal = styled.aside`
   visibility: hidden;
   z-index: 3;
 
-  ${({ toggle }: any) =>
+  ${({ toggle }) =>
     toggle &&
     css`
       opacity: 1;

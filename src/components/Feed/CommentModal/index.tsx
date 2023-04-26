@@ -4,13 +4,12 @@ import { StyledRxCross2 } from './style';
 import { useFeed } from '../../../context/FeedContext';
 import { getComments } from '../../../api/data';
 import { useQuery } from 'react-query';
-import { PostLike, PostComment } from '../PostList/types';
+import { PostComment } from '../../../interface/post';
 function CommentModal() {
-  const { isCommentModal, setIsCommentModal, commentTargetPostId, posts } =
-    useFeed();
+  const { setIsCommentModal, commentTargetPostId } = useFeed();
   const {
-    isCommentLoading,
     data: comments,
+    isLoading: isCommentLoading,
     isError,
   } = useQuery(
     ['comments', commentTargetPostId],
@@ -26,17 +25,13 @@ function CommentModal() {
   return (
     <S.ModalOverlay>
       <S.Modal>
-        <div style={{ color: 'white' }}>
-          {comments &&
-            comments.map((comment: PostComment) => (
-              <S.CommentWrapper key={comment.id}>
-                <h4 style={{ fontSize: '9px' }}>
-                  작성자: {comment.author.username}
-                </h4>
-                <h1>{comment.content} </h1>
-              </S.CommentWrapper>
-            ))}
-        </div>
+        {comments &&
+          comments.map((comment: PostComment) => (
+            <S.CommentWrapper key={comment.id}>
+              <S.Author>작성자: {comment.author.username}</S.Author>
+              <h1>{comment.content} </h1>
+            </S.CommentWrapper>
+          ))}
 
         <StyledRxCross2
           onClick={() => {

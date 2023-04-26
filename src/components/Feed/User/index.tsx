@@ -2,13 +2,19 @@ import React from 'react';
 import * as S from './style';
 import UserImg from '../UserImg';
 import { useQuery } from 'react-query';
-import { UserType } from '../PostList/types';
-import { getUsersImages, getUserData } from '../../../api/data';
+import { PostAuthor } from '../../../interface/post';
+import { getUserData } from '../../../api/data';
+import { UserDetail } from '../../../interface/user';
 
-function User({ user, avatarSize }: any) {
+export interface UserProps {
+  user: UserDetail;
+  avatarSize?: 'small';
+}
+
+function User({ user, avatarSize }: UserProps) {
   const {
-    isLoading,
     data: userData,
+    isLoading,
     error,
   } = useQuery('usersData', getUserData);
   if (isLoading) {
@@ -16,7 +22,7 @@ function User({ user, avatarSize }: any) {
   }
 
   const currentUserData = userData.find(
-    (data: UserType) => data.id === user.id
+    (data: PostAuthor) => data.id === user.id
   );
 
   return (

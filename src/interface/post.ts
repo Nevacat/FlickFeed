@@ -1,31 +1,32 @@
-interface Post {
+export interface Post {
   id: string;
   place: string;
   content: string;
   postImg: string;
-  comment?: PostComment[];
+  comments?: PostComment[];
   likes: PostLikes[];
+  author: Author;
 }
-
-interface PostComment {
+export interface Author {
+  email: string;
   id: string;
-  comment: string;
+  userImg: string;
+  username: string;
+}
+export interface PostComment {
+  id: string;
+  content: string;
   author: PostAuthor;
 }
 
-interface PostAuthor {
+export interface PostAuthor {
   id: string;
   username: string;
 }
 
-interface PostLikes {
+export interface PostLikes {
   id: string;
-  user: PostUser;
-}
-
-interface PostUser {
-  id: string;
-  username: string;
+  user: PostAuthor;
 }
 
 export interface PostCreate {

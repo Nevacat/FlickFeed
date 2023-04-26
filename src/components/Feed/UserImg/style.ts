@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import { UserImgProps } from '.';
 
-export const UserImg = styled.div`
-  ${({ size }: any) =>
+export const UserImg = styled.div<UserImgProps>`
+  ${({ size }) =>
     size === 'small'
       ? css`
           width: 40px;
@@ -15,4 +16,10 @@ export const UserImg = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  ${({ url }) =>
+    url
+      ? css`
+          background-image: url(${url});
+        `
+      : css``}
 `;

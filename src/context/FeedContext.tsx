@@ -1,14 +1,28 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, Context } from 'react';
 import { useQuery } from 'react-query';
 import { getPosts } from '../api/data';
+import { Post } from '../interface/post';
 
-export const FeedContext = createContext();
+interface FeedContextType {
+  isCommentModal: boolean;
+  setIsCommentModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isDeleteModal: boolean;
+  setIsDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteTargetPostId: string;
+  setDeleteTargetPostId: React.Dispatch<React.SetStateAction<string>>;
+  commentTargetPostId: string;
+  setCommentTargetPostId: React.Dispatch<React.SetStateAction<string>>;
+  posts: Post[];
+  isLoading: boolean;
+}
 
-function FeedContextProvider({ children }) {
+export const FeedContext = createContext<FeedContextType | null>(null);
+
+function FeedContextProvider({ children }: { children: React.ReactNode }) {
   const [isCommentModal, setIsCommentModal] = useState(false);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
-  const [deleteTargetPostId, setDeleteTargetPostId] = useState(null);
-  const [commentTargetPostId, setCommentTargetPostId] = useState(null);
+  const [deleteTargetPostId, setDeleteTargetPostId] = useState('');
+  const [commentTargetPostId, setCommentTargetPostId] = useState('');
   const { isLoading, data: posts, error } = useQuery('posts', getPosts);
 
   return (
@@ -44,7 +58,7 @@ export function useFeed() {
     setDeleteTargetPostId,
     commentTargetPostId,
     setCommentTargetPostId,
-  } = useContext(FeedContext);
+  } = useContext<FeedContextType>(FeedContext as Context<FeedContextType>);
   return {
     isCommentModal,
     setIsCommentModal,

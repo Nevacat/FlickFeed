@@ -4,7 +4,6 @@ import * as S from './style';
 import { deletePost } from '../../../api/data';
 import { useFeed } from '../../../context/FeedContext';
 
-type Refresh = () => void;
 function DeleteModal() {
   const { isDeleteModal, setIsDeleteModal, deleteTargetPostId } = useFeed();
   const refresh = () => window.location.reload();

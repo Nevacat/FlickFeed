@@ -4,8 +4,13 @@ import * as S from './style';
 import { useQuery, useMutation } from 'react-query';
 import { StyledEditBtn } from './style';
 import { useFeed } from '../../../context/FeedContext';
-import { PostComment } from '../PostList/types';
-function PostHeader({ post }: PostComment) {
+import { Post } from '../../../interface/post';
+interface PostHeaderProps {
+  post: Post;
+}
+
+function PostHeader({ post }: PostHeaderProps) {
+  console.log(post);
   const { setIsDeleteModal, setDeleteTargetPostId } = useFeed();
   return (
     <S.PostHeader>

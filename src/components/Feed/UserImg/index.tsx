@@ -1,8 +1,13 @@
 import React from 'react';
 import * as S from './style';
-import { getUsers } from '../../../api/data';
-function UserImg({ size, url }: any) {
-  return <S.UserImg size={size} style={{ backgroundImage: `url(${url})` }} />;
+
+export interface UserImgProps {
+  size?: 'small';
+  url?: string;
+}
+
+function UserImg({ size, url }: UserImgProps) {
+  return <S.UserImg size={size} url={url} />;
 }
 
 export default UserImg;
