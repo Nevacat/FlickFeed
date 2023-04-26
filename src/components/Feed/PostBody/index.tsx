@@ -20,7 +20,7 @@ function PostBody({ postId, postContent }) {
     }
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     mutate({ postId, comment });
   };

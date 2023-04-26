@@ -4,8 +4,10 @@ import * as S from './style';
 import { deletePost } from '../../../api/data';
 import { useFeed } from '../../../context/FeedContext';
 
+type Refresh = () => void;
 function DeleteModal() {
   const { isDeleteModal, setIsDeleteModal, deleteTargetPostId } = useFeed();
+  const refresh = () => window.location.reload();
   const { mutate, isLoading } = useMutation(deletePost, {
     onSuccess: (res) => {
       console.log('mutation Response: ', { res });
@@ -14,13 +16,13 @@ function DeleteModal() {
       console.log('error', { res });
     },
   });
-  const handleDeletePost = (postId) => {
+  const handleDeletePost = (postId: string) => {
     sessionStorage.setItem('user', JSON.stringify({ id: postId }));
-
     mutate(postId);
+    alert('삭제되었습니다');
+    refresh();
   };
   return (
-    // <Container>
     <S.DeleteModal toggle={isDeleteModal}>
       <S.Warning>
         정말 삭제하시겠습니까? <br />
@@ -39,7 +41,6 @@ function DeleteModal() {
       </S.ButtonGroup>
     </S.DeleteModal>
   );
-  // </Container>
 }
 
 export default DeleteModal;

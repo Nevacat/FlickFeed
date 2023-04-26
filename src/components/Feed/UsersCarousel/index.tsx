@@ -4,7 +4,7 @@ import * as S from './style';
 import { useQuery } from 'react-query';
 import { getUsers, getUsersImages, getUserData } from '../../../api/data';
 import MultiCarousel from '../../MultiCarousel';
-
+import { UserType } from '../PostList/types';
 function UsersCarousel() {
   const {
     isLoading,
@@ -23,8 +23,10 @@ function UsersCarousel() {
     return <div>로딩중...</div>;
   }
 
-  const userList = users.map((user) => {
-    const matchingUserData = userData.find((data) => data.id === user.id);
+  const userList = users.map((user: UserType) => {
+    const matchingUserData = userData.find(
+      (data: UserType) => data.id === user.id
+    );
     return { ...user, ...matchingUserData };
   });
   return (

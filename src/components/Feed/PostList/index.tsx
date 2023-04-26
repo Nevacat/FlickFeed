@@ -5,7 +5,6 @@ import { getPosts } from '../../../api/data';
 import { Post } from './types';
 import * as S from './style';
 import { useFeed } from '../../../context/FeedContext';
-import { getUsers, getUsersImages, getUserData } from '../../../api/data';
 function PostList() {
   const { posts } = useFeed();
   const {
@@ -13,7 +12,7 @@ function PostList() {
     data: postImages,
     error,
   } = useQuery('posts', getPosts, {
-    select: (posts) => posts.map((post) => post.id),
+    select: (posts) => posts.map((post: Post) => post.id),
   });
 
   return (

@@ -1,17 +1,17 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
-// export const Container = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   position: fixed;
-// `;
+const slideUp = keyframes`
+from {
+  opacity:0
+} to{
+  opacity:1
+}`;
+
 export const DeleteModal = styled.aside`
-  width: 100%;
+  width: 310px;
   height: 190px;
-  background: red;
   position: fixed;
   bottom: -22px;
-  left: -12px;
   padding: 16px 12px 12px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px 8px 0 0;
@@ -20,8 +20,6 @@ export const DeleteModal = styled.aside`
   opacity: 0;
   visibility: hidden;
   z-index: 3;
-  transform: translate3d(0, 100%, 0);
-  transition: all 200ms ease-in-out;
 
   ${({ toggle }: any) =>
     toggle &&
@@ -29,7 +27,6 @@ export const DeleteModal = styled.aside`
       opacity: 1;
       visibility: visible;
       z-index: 10;
-      transform: translate3d(0, 0, 0);
     `};
 `;
 
@@ -81,4 +78,5 @@ export const SubmitButton = styled(DefaultButton)`
 `;
 export const Warning = styled.div`
   text-align: center;
+  margin-bottom: 10px;
 `;

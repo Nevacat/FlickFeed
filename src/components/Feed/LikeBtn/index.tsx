@@ -20,7 +20,7 @@ function LikeBtn({ postId }) {
 
   const toggleLike = () => {
     mutate(postId);
-    setIsLiked((prev) => !prev);
+    setIsLiked((prev: Boolean) => !prev);
   };
   return (
     <>

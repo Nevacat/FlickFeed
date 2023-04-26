@@ -1,33 +1,42 @@
-export type Post = {
+export interface Post {
   id: number;
   place: string;
   content: string;
   postImage: string;
   likes: Like[];
-};
+}
 
-export type User = {
+export interface UserType {
   id: number;
   username: string;
-};
+}
 
-export type Like = {
+export interface Like {
   userId: number;
   user: User;
-};
+}
 
-export type PostLike = {
+export interface PostLike {
   Id: string;
   user: User;
-};
+}
 
-export type PostComment = {
+export interface PostComment {
   id: string;
   content: string;
   author: User;
-};
+}
 
-export type PostCommentsParams = {
+export interface PostCommentsParams {
   postId: string;
   content: string;
-};
+}
+
+export interface User {
+  id: string;
+  username: string;
+}
+
+export interface Props {
+  post: Post;
+}

@@ -7,7 +7,8 @@ import * as S from './style';
 import { StyledFaRegComment } from './style';
 import { useFeed } from '../../../context/FeedContext';
 import { useQuery } from 'react-query';
-import { getPost, getPosts } from '../../../api/data';
+import { getPosts } from '../../../api/data';
+import { Props } from '../PostList/types';
 
 function PostItem({ post }) {
   const { setIsCommentModal, setCommentTargetPostId } = useFeed();

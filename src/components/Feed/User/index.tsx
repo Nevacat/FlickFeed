@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './style';
 import UserImg from '../UserImg';
 import { useQuery } from 'react-query';
+import { UserType } from '../PostList/types';
 import { getUsersImages, getUserData } from '../../../api/data';
 
 function User({ user, avatarSize }: any) {
@@ -14,7 +15,9 @@ function User({ user, avatarSize }: any) {
     return <div>로딩중...</div>;
   }
 
-  const currentUserData = userData.find((data: any) => data.id === user.id);
+  const currentUserData = userData.find(
+    (data: UserType) => data.id === user.id
+  );
 
   return (
     <S.User>
