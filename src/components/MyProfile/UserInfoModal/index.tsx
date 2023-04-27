@@ -30,13 +30,10 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
     },
   });
 
-  const changeInputHandler = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setUserInput((prevState) => ({ ...prevState, [name]: value }));
-    },
-    []
-  );
+  const changeInputHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserInput((prevState) => ({ ...prevState, [name]: value }));
+  }, []);
 
   const submitInputHandler = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,35 +59,20 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
             <label style={{ textAlign: 'left' }} htmlFor="username">
               닉네임
             </label>
-            <input
-              name="username"
-              type="text"
-              value={userInput.username}
-              id="username"
-              onChange={changeInputHandler}
-            />
+            <input name="username" type="text" value={userInput.username} id="username" onChange={changeInputHandler} />
           </S.SingleInput>
 
           <S.SingleInput>
             <label style={{ textAlign: 'left' }} htmlFor="userInfo">
               상태 메시지
             </label>
-            <input
-              name="userInfo"
-              type="text"
-              value={userInput.userInfo}
-              id="userInfo"
-              onChange={changeInputHandler}
-            />
+            <input name="userInfo" type="text" value={userInput.userInfo} id="userInfo" onChange={changeInputHandler} />
           </S.SingleInput>
         </S.inputContainer>
 
         <S.ButtonGroup>
           <S.SubmitButton type="submit">변경</S.SubmitButton>
-          <S.DefaultButton
-            type="button"
-            onClick={() => setIsModalOpen(!isModalOpen)}
-          >
+          <S.DefaultButton type="button" onClick={() => setIsModalOpen(!isModalOpen)}>
             취소
           </S.DefaultButton>
         </S.ButtonGroup>

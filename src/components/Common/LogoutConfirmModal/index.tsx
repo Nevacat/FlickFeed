@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import * as S from './style';
 import { axiosInstance } from '../../../api/axios';
 import { removeCookie } from '../../../utils/cookies';
@@ -27,9 +27,7 @@ function index({ setIsLogoutModalOpen }: LogoutConfirmModalProps) {
 
       <div className="button-group">
         <S.LogoutButton onClick={logoutHandler}>로그아웃</S.LogoutButton>
-        <S.CancelButton onClick={() => setIsLogoutModalOpen(false)}>
-          취소
-        </S.CancelButton>
+        <S.CancelButton onClick={() => setIsLogoutModalOpen(false)}>취소</S.CancelButton>
       </div>
     </S.LogoutModal>
   );

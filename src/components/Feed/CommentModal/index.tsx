@@ -1,4 +1,3 @@
-import React from 'react';
 import * as S from './style';
 import { StyledRxCross2 } from './style';
 import { useFeed } from '../../../context/FeedContext';
@@ -11,16 +10,12 @@ function CommentModal() {
     data: comments,
     isLoading: isCommentLoading,
     isError,
-  } = useQuery(
-    ['comments', commentTargetPostId],
-    () => getComments(commentTargetPostId),
-    {
-      select: (post) => {
-        post.comments;
-        return post.comments;
-      },
-    }
-  );
+  } = useQuery(['comments', commentTargetPostId], () => getComments(commentTargetPostId), {
+    select: (post) => {
+      post.comments;
+      return post.comments;
+    },
+  });
 
   return (
     <S.ModalOverlay>

@@ -39,14 +39,14 @@ function PostBody({ postId, postContent }: PostBodyProps) {
         <S.Content> {postContent} </S.Content>
         <S.CommentWrapper>
           <S.Input
-            type='text'
+            type="text"
             value={comment}
-            placeholder='댓글 달기...'
+            placeholder="댓글 달기..."
             onChange={(e) => {
               setComment(e.target.value);
             }}
           />
-          <S.Button type='submit'>게시</S.Button>
+          <S.Button type="submit">게시</S.Button>
         </S.CommentWrapper>
       </S.Form>
     </S.PostBody>

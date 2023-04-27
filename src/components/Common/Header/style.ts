@@ -17,8 +17,7 @@ export const Header = styled.header`
 `;
 
 export const Logo = styled.div<IHeader>`
-  display: ${({ location }: any) =>
-    location.pathname === '/myProfile' ? 'none' : 'block'};
+  display: ${({ location }: any) => (location.pathname === '/myProfile' ? 'none' : 'block')};
   flex-grow: 1;
   transform: scale(0.5);
   height: 100%;
@@ -50,8 +49,7 @@ export const BackButton = styled(StyledLink)`
 `;
 
 export const LogoutButton = styled.button<IHeader>`
-  display: ${({ location }: any) =>
-    location.pathname === '/posts' ? 'flex' : 'none'};
+  display: ${({ location }: any) => (location.pathname === '/posts' ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   outline: none;

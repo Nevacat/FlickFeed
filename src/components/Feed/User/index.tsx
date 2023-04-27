@@ -12,18 +12,12 @@ export interface UserProps {
 }
 
 function User({ user, avatarSize }: UserProps) {
-  const {
-    data: userData,
-    isLoading,
-    error,
-  } = useQuery('usersData', getUserData);
+  const { data: userData, isLoading, error } = useQuery('usersData', getUserData);
   if (isLoading) {
     return <div>로딩중...</div>;
   }
 
-  const currentUserData = userData.find(
-    (data: PostAuthor) => data.id === user.id
-  );
+  const currentUserData = userData.find((data: PostAuthor) => data.id === user.id);
 
   return (
     <S.User>
