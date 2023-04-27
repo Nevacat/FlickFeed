@@ -9,6 +9,8 @@ import { useFeed } from '../../../context/FeedContext';
 import { useQuery } from 'react-query';
 import { getPosts } from '../../../api/data';
 import { Post } from '../../../interface/post';
+import Loading from '../../Common/Loading';
+
 interface PostItemProp {
   post: Post;
 }
@@ -22,7 +24,7 @@ function PostItem({ post }: PostItemProp) {
   } = useQuery('posts', getPosts);
 
   if (isContentLoading) {
-    return <div>로딩중입니다</div>;
+    return <Loading />;
   }
 
   return (
