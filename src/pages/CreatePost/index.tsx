@@ -10,7 +10,7 @@ function CreatePost() {
   const navigate = useNavigate()
   const { mutate } = useMutation((formData:FormData) => createPost(formData),{
     onSuccess: ()=>{
-      navigate(-1)
+      navigate('/posts')
     }
   });
   const [post, setPost] = useState<PostCreate>({postImg: null , place:'', content:''})
@@ -24,8 +24,11 @@ function CreatePost() {
     e.preventDefault();
 
     const {postImg, place, content} = post;
+    if(!postImg){
+      return alert('게시물에 대한 이미지가 없습니다.!')
+    }
     const formData = new FormData();
-
+    
     formData.append('postImg', postImg!);
     formData.append('place', place!);
     formData.append('content', content);
