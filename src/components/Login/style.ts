@@ -44,8 +44,8 @@ export const LoginStyle = styled.button`
   display: ${display};
   background-color: ${theme.color.purple};
   color: ${theme.color.white};
-  font-weight:${theme.fontWeight.bold};
-  border:none;
+  font-weight: ${theme.fontWeight.bold};
+  border: none;
 `;
 
 export const Signin = styled.h1`

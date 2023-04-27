@@ -1,4 +1,3 @@
-import { PostCreate } from '../interface/post';
 import { UserInput } from '../interface/user';
 import { axiosImgInstance, axiosInstance } from './axios';
 import axios from 'axios';
@@ -20,16 +19,14 @@ export const editUser = async (input: UserInput) => {
 
 export const getUsers = async () => {
   const res = await axios.get('/users', {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
+    baseURL: 'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
   });
   return res.data;
 };
 
 export const getUsersImages = async () => {
   const res = await axios.get(`/users`, {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
+    baseURL: 'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
   });
   return res.data.users.map((user: Omit<UserDetail, 'username'>) => ({
     id: user.id,
@@ -39,8 +36,7 @@ export const getUsersImages = async () => {
 
 export const getUserData = async () => {
   const res = await axios.get(`/users`, {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
+    baseURL: 'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
   });
   const userData = res.data.users.map((user: UserDetail) => ({
     id: user.id,
@@ -57,16 +53,14 @@ export const getMyPost = async () => {
 
 export const getPost = async (postId: string) => {
   const res = await axios.get(`/posts/${postId}`, {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
+    baseURL: 'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
   });
   return res.data;
 };
 
 export const getPosts = async () => {
   const res = await axios.get('/posts', {
-    baseURL:
-      'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
+    baseURL: 'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
   });
   return res.data;
 };
@@ -86,13 +80,7 @@ export const deletePost = async (postId: string) => {
   return res.data;
 };
 
-export const postComments = async ({
-  postId,
-  content,
-}: {
-  postId: string;
-  content: string;
-}) => {
+export const postComments = async ({ postId, content }: { postId: string; content: string }) => {
   const res = await axiosInstance.post('/comment', { postId, content });
   return res.data;
 };

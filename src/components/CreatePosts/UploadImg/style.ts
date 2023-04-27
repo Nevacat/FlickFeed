@@ -9,16 +9,20 @@ interface IProps {
 export const Box = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 10px;
-  overflow:hidden;
+  overflow: hidden;
 `;
 
-export const Preview= styled.div<IProps>`
+export const Preview = styled.div<IProps>`
   height: 220px;
   overflow: hidden;
   background-color: inherit;
   background-position: center center;
   background-repeat: no-repeat;
-  ${(props) => props.backgroundImage && css`background-image: url(${props.backgroundImage});`};
+  ${(props) =>
+    props.backgroundImage &&
+    css`
+      background-image: url(${props.backgroundImage});
+    `};
   background-size: 100%;
   position: relative;
 `;
@@ -33,7 +37,7 @@ export const ImgIcon = styled(BsFillImageFill)`
   margin: auto;
   z-index: 0;
   color: rgba(155, 121, 187, 0.7);
-  display:${props => props.display}
+  display: ${(props) => props.display};
 `;
 
 export const UploadOption = styled.div`

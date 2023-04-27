@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { VscChevronLeft } from 'react-icons/vsc';
 import { AiFillGithub } from 'react-icons/ai';
 import * as S from './style';
@@ -24,9 +24,7 @@ function index() {
         <BiLogOut />
       </S.LogoutButton>
 
-      {isLogoutModalOpen && (
-        <LogoutConfirmModal setIsLogoutModalOpen={setIsLogoutModalOpen} />
-      )}
+      {isLogoutModalOpen && <LogoutConfirmModal setIsLogoutModalOpen={setIsLogoutModalOpen} />}
 
       <S.Logo location={location}>
         <S.Img src="images/FlickFeed.png" alt="FilckFeed" />

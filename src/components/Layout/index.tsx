@@ -7,15 +7,14 @@ import { Header } from '../MyProfile';
 function Layout() {
   const location = useLocation();
 
-
   return (
     <S.Layout>
-      {!(location.pathname === '/register' || location.pathname === '/') && 
-      <>
-        <Nav/>
-        <Header/>
-      </>
-      }
+      {!(location.pathname === '/register' || location.pathname === '/') && (
+        <>
+          <Nav />
+          <Header />
+        </>
+      )}
       <Outlet />
     </S.Layout>
   );

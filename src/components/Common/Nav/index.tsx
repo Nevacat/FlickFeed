@@ -29,14 +29,7 @@ function index() {
       </S.StyledLink>
 
       <S.StyledLink to="/myProfile">
-        <img
-          src={
-            memoizedUser?.user.userImg
-              ? memoizedUser?.user.userImg
-              : 'images/profile_background.jpg'
-          }
-          alt=""
-        />
+        <img src={memoizedUser?.user.userImg ? memoizedUser?.user.userImg : 'images/profile_background.jpg'} alt="" />
       </S.StyledLink>
     </S.Gnb>
   );

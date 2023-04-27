@@ -15,19 +15,13 @@ function UsersCarousel() {
     select: (payload) => payload.users,
   });
 
-  const {
-    isLoading: isLoadingUserdata,
-    data: userData,
-    error: userDataError,
-  } = useQuery('usersData', getUserData);
+  const { isLoading: isLoadingUserdata, data: userData, error: userDataError } = useQuery('usersData', getUserData);
   if (isLoading || isLoadingUserdata) {
     return <Loading />;
   }
 
   const userList = users.map((user: PostAuthor) => {
-    const matchingUserData = userData.find(
-      (data: PostAuthor) => data.id === user.id
-    );
+    const matchingUserData = userData.find((data: PostAuthor) => data.id === user.id);
     return { ...user, ...matchingUserData };
   });
   return (

@@ -22,11 +22,7 @@ function index() {
     <S.UserInfo>
       <S.Image>
         <img
-          src={
-            memoizedUser?.user.userImg
-              ? memoizedUser?.user.userImg
-              : 'images/profile_background.jpg'
-          }
+          src={memoizedUser?.user.userImg ? memoizedUser?.user.userImg : 'images/profile_background.jpg'}
           alt={memoizedUser?.username}
         />
       </S.Image>
@@ -37,13 +33,7 @@ function index() {
         프로필 편집
       </S.EditButton>
 
-      {isModalOpen && (
-        <UserInfoModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          user={memoizedUser}
-        />
-      )}
+      {isModalOpen && <UserInfoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} user={memoizedUser} />}
     </S.UserInfo>
   );
 }

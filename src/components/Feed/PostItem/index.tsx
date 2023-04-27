@@ -1,4 +1,3 @@
-import React from 'react';
 import PostHeader from '../PostHeader';
 import UserImg from '../UserImg';
 import LikeBtn from '../LikeBtn';
@@ -17,11 +16,7 @@ interface PostItemProp {
 
 function PostItem({ post }: PostItemProp) {
   const { setIsCommentModal, setCommentTargetPostId } = useFeed();
-  const {
-    data: postContents,
-    isLoading: isContentLoading,
-    isError,
-  } = useQuery('posts', getPosts);
+  const { data: postContents, isLoading: isContentLoading, isError } = useQuery('posts', getPosts);
 
   if (isContentLoading) {
     return <Loading />;
@@ -30,7 +25,7 @@ function PostItem({ post }: PostItemProp) {
   return (
     <S.PostItem>
       <S.TopSection>
-        <UserImg size='small' url={post.author.userImg} />
+        <UserImg size="small" url={post.author.userImg} />
 
         <PostHeader post={post} />
       </S.TopSection>

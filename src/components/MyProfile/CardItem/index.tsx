@@ -21,12 +21,7 @@ function index({ postImg }: CartItemProps) {
         </S.ItemButton>
       </S.CardItem>
 
-      {isUserPostModalOpen && (
-        <UserPostModal
-          postImg={postImg}
-          setIsUserPostModalOpen={setIsUserPostModalOpen}
-        />
-      )}
+      {isUserPostModalOpen && <UserPostModal postImg={postImg} setIsUserPostModalOpen={setIsUserPostModalOpen} />}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as S from './style';
 import { AiOutlineHeart, AiTwotoneHeart } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
@@ -14,11 +14,7 @@ function LikeBtn({ postId }: LikeBtnProps) {
     const likeStatus = localStorage.getItem(`post-${postId}`);
     return likeStatus ? JSON.parse(likeStatus) : false;
   });
-  const {
-    mutate,
-    isLoading: isLikeLoading,
-    error,
-  } = useMutation((post: string) => postLikes(post));
+  const { mutate, isLoading: isLikeLoading, error } = useMutation((post: string) => postLikes(post));
 
   useEffect(() => {
     localStorage.setItem(`post-${postId}`, JSON.stringify(isLiked));
@@ -30,9 +26,7 @@ function LikeBtn({ postId }: LikeBtnProps) {
   };
   return (
     <>
-      <S.LikeBtn onClick={toggleLike}>
-        {isLiked ? <RedLikeBtn /> : <AiOutlineHeart />}
-      </S.LikeBtn>{' '}
+      <S.LikeBtn onClick={toggleLike}>{isLiked ? <RedLikeBtn /> : <AiOutlineHeart />}</S.LikeBtn>{' '}
     </>
   );
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import PostItem from '../../Feed/PostItem';
 import * as S from './style';
 import { useFeed } from '../../../context/FeedContext';
