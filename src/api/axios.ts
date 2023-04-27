@@ -18,7 +18,7 @@ const getAxiosInstance = (ContentType:string) => {
       return request;
     },
     (error: AxiosError) => {
-      console.log(error);
+      console.error(error);
       return Promise.reject(error);
     }
   );

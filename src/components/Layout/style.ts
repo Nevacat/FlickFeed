@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Layout = styled.div`
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.color.white};

@@ -17,7 +17,7 @@ export const Content = styled.div`
 export const CommentWrapper = styled.div`
   position: absolute;
   bottom: 0;
-  left: -2px;
+  left: -6px;
   display: flex;
   width: 100%;
   border: 1px solid ${({ theme }) => theme.color.gray};

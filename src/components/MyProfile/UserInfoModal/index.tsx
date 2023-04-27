@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, memo } from 'react';
 import { QueryClient, useMutation } from 'react-query';
 import * as S from './style';
 import { UserInput } from '../../../interface/user';
@@ -13,42 +13,46 @@ type ModalProps = {
 function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
   const queryClient = new QueryClient();
 
-  const [userInput, setUserInput] = useState<UserInput>({
-    username: user?.user.username,
-    userInfo: user?.user.userInfo,
-  });
-
-  useEffect(() => {
-    setUserInput((prevState) => ({
-      ...prevState,
-      username: user?.user.username,
-      userInfo: user?.user.userInfo,
-    }));
-  }, [isModalOpen]);
+  const [userInput, setUserInput] = useState<UserInput>(
+    useMemo(
+      () => ({
+        username: user?.user.username ?? '',
+        userInfo: user?.user.userInfo ?? '',
+      }),
+      [user]
+    )
+  );
 
   const { mutate } = useMutation(editUser, {
     onSuccess: (data) => {
-      console.log(data);
       queryClient.setQueryData(['user'], data);
       window.location.reload();
     },
-    onError: (error) => {
-      console.log(error);
-    },
   });
 
-  const changeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    console.log(name, value);
-    setUserInput((prevState) => ({ ...prevState, [name]: value }));
-  };
+  const changeInputHandler = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setUserInput((prevState) => ({ ...prevState, [name]: value }));
+    },
+    []
+  );
 
-  const submitInputHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const submitInputHandler = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      mutate(userInput);
+      setUserInput({ username: '', userInfo: '' });
+    },
+    [mutate, userInput]
+  );
 
-    mutate(userInput);
-    setUserInput({ username: '', userInfo: '' });
-  };
+  useEffect(() => {
+    setUserInput({
+      username: user?.user.username ?? '',
+      userInfo: user?.user.userInfo ?? '',
+    });
+  }, [isModalOpen, user]);
 
   return (
     <S.Modal toggle={isModalOpen}>
@@ -77,7 +81,6 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
               value={userInput.userInfo}
               id="userInfo"
               onChange={changeInputHandler}
-              style={{}}
             />
           </S.SingleInput>
         </S.inputContainer>
@@ -96,4 +99,4 @@ function UserInfoModal({ isModalOpen, setIsModalOpen, user }: ModalProps) {
   );
 }
 
-export default UserInfoModal;
+export default memo(UserInfoModal);

@@ -12,7 +12,7 @@ function DeleteModal() {
       console.log('mutation Response: ', { res });
     },
     onError: (res) => {
-      console.log('error', { res });
+      console.error('error', { res });
     },
   });
   const handleDeletePost = (postId: string) => {

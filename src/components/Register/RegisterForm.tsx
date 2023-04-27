@@ -23,6 +23,7 @@ import {
   SpanEl,
 } from './style';
 import { useNavigate } from 'react-router-dom';
+import { memo, useMemo } from 'react';
 
 export interface RegisterFormProps {
   mutate: UseMutateFunction<
@@ -36,7 +37,6 @@ function RegisterForm({ mutate }: RegisterFormProps) {
   const navigate = useNavigate();
 
   const [imageUrl, setImageUrl] = useState<string>('');
-
   const [userImg, setUserImg] = useState<File | null>(null);
 
   const [userInput, setUserInput] = useState<RegisterRequest>({
@@ -47,12 +47,20 @@ function RegisterForm({ mutate }: RegisterFormProps) {
     userImg: null,
     userInfo: '',
   });
-  let formData = new FormData();
-  formData.append('email', userInput.email);
-  formData.append('password', userInput.password);
-  formData.append('username', userInput.username);
-  userInput.userInfo ? formData.append('userinfo', userInput.userInfo) : null;
-  userInput.userImg ? formData.append('userimg', userInput.userImg) : null;
+
+  const formData = useMemo(() => {
+    const data = new FormData();
+    data.append('email', userInput.email);
+    data.append('password', userInput.password);
+    data.append('username', userInput.username);
+    if (userInput.userInfo) {
+      data.append('userinfo', userInput.userInfo);
+    }
+    if (userInput.userImg) {
+      data.append('userimg', userInput.userImg);
+    }
+    return data;
+  }, [userInput]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -75,6 +83,14 @@ function RegisterForm({ mutate }: RegisterFormProps) {
       navigate('/login');
     } else {
       alert('비밀번호를 확인해주세요!');
+    if(userInput.password == userInput.passwordConfirm){
+      e.preventDefault()
+      mutate(userInput)
+      alert("All Signed Up!")
+      setUserInput({email: '', password: '', username: '', passwordConfirm: '', userImg: null, userInfo: ''})
+      navigate("/login")
+    }else{
+      alert("비밀번호를 확인해주세요!")
     }
   };
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {

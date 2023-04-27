@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import * as S from './style';
 import { useMutation } from 'react-query';
 import UserInfoModal from '../UserInfoModal';
@@ -12,20 +12,26 @@ function index() {
     mutate();
   }, []);
 
+  const memoizedUser = useMemo(() => user, [user]);
+
+  const memoizedGetUser = useCallback(() => {
+    return getUser();
+  }, []);
+
   return (
     <S.UserInfo>
       <S.Image>
         <img
           src={
-            user?.user.userImg
-              ? user?.user.userImg
+            memoizedUser?.user.userImg
+              ? memoizedUser?.user.userImg
               : 'images/profile_background.jpg'
           }
-          alt={user?.username}
+          alt={memoizedUser?.username}
         />
       </S.Image>
-      <S.Name>{user?.user.username}</S.Name>
-      <S.StatusMessage>{user?.user.userInfo}</S.StatusMessage>
+      <S.Name>{memoizedUser?.user.username}</S.Name>
+      <S.StatusMessage>{memoizedUser?.user.userInfo}</S.StatusMessage>
 
       <S.EditButton type="button" onClick={() => setIsModalOpen(!isModalOpen)}>
         프로필 편집
@@ -35,7 +41,7 @@ function index() {
         <UserInfoModal
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
-          user={user}
+          user={memoizedUser}
         />
       )}
     </S.UserInfo>

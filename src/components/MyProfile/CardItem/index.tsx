@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import UserPostModal from '../UserPostModal';
 import * as S from './style';
 
@@ -9,12 +9,14 @@ type CartItemProps = {
 function index({ postImg }: CartItemProps) {
   const [isUserPostModalOpen, setIsUserPostModalOpen] = useState(false);
 
+  const handleToggleModal = useCallback(() => {
+    setIsUserPostModalOpen((prevState) => !prevState);
+  }, []);
+
   return (
     <>
       <S.CardItem>
-        <S.ItemButton
-          onClick={() => setIsUserPostModalOpen(!isUserPostModalOpen)}
-        >
+        <S.ItemButton onClick={handleToggleModal}>
           <S.ItemImage src={postImg} alt="" />
         </S.ItemButton>
       </S.CardItem>
@@ -29,4 +31,4 @@ function index({ postImg }: CartItemProps) {
   );
 }
 
-export default index;
+export default React.memo(index);

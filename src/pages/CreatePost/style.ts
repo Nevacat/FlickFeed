@@ -27,6 +27,6 @@ export const TextArea = styled.textarea`
 export const Form = styled.form`
   width:100%;
   box-sizing:border-box;
-  padding: 80px 22px 0;
+  padding: 90px 22px 0;
   position:relative;
 `
