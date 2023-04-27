@@ -22,23 +22,28 @@ function DeleteModal() {
     refresh();
   };
   return (
-    <S.DeleteModal toggle={isDeleteModal}>
-      <S.Warning>
-        정말 삭제하시겠습니까? <br />
-        삭제된 게시물은 복구되지 않습니다
-      </S.Warning>
-      <S.ButtonGroup>
-        <S.SubmitButton
-          type='submit'
-          onClick={() => handleDeletePost(deleteTargetPostId)}
-        >
-          삭제
-        </S.SubmitButton>
-        <S.DefaultButton type='button' onClick={() => setIsDeleteModal(false)}>
-          취소
-        </S.DefaultButton>
-      </S.ButtonGroup>
-    </S.DeleteModal>
+    <S.DeleteModalOverlay>
+      <S.DeleteModal toggle={isDeleteModal}>
+        <S.Warning>
+          정말 삭제하시겠습니까? <br />
+          삭제된 게시물은 복구되지 않습니다
+        </S.Warning>
+        <S.ButtonGroup>
+          <S.SubmitButton
+            type='submit'
+            onClick={() => handleDeletePost(deleteTargetPostId)}
+          >
+            삭제
+          </S.SubmitButton>
+          <S.DefaultButton
+            type='button'
+            onClick={() => setIsDeleteModal(false)}
+          >
+            취소
+          </S.DefaultButton>
+        </S.ButtonGroup>
+      </S.DeleteModal>
+    </S.DeleteModalOverlay>
   );
 }
 

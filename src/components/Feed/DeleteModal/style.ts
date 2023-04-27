@@ -2,62 +2,43 @@ import styled, { css } from 'styled-components';
 interface DeleModalProps {
   toggle: boolean;
 }
-export const DeleteModal = styled.aside<DeleModalProps>`
-  width: 310px;
-  height: 130px;
-  position: fixed;
-  bottom: 22px;
-  padding: 16px 12px 12px;
-  background-color: ${({ theme }) => theme.color.white};
-  border-radius: 8px 8px 0 0;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-    rgb(209, 213, 219) 0px 0px 0px 1px inset;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 3;
 
+export const DeleteModalOverlay = styled.div`
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  z-index: 2;
+`;
+export const DeleteModal = styled.aside<DeleModalProps>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 180px;
+  background-color: ${({ theme }) => theme.color.white};
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   ${({ toggle }) =>
     toggle &&
     css`
       opacity: 1;
       visibility: visible;
-      z-index: 10;
     `};
-`;
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
-
-export const inputContainer = styled.div`
-  flex-grow: 1;
-`;
-
-export const SingleInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: ${({ theme }) => theme.fontSize.xsmall};
-  color: ${({ theme }) => theme.color.gray};
-
-  &:not(:last-child) {
-    margin-bottom: 12px;
-  }
-
-  label {
-    margin-bottom: 4px;
-  }
-
-  input {
-    padding: 4px;
-  }
 `;
 
 export const ButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 80%;
 `;
 
 export const DefaultButton = styled.button`
