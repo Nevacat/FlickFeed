@@ -5,12 +5,13 @@ import { useFeed } from '../../../context/FeedContext';
 import { Post } from '../../../interface/post';
 function PostList() {
   const { posts } = useFeed();
-  console.log(posts)
-  const sortedPosts = posts && posts.slice().sort((a: Post, b: Post) => {
-    const dateA = new Date(a.createAt!);
-    const dateB = new Date(b.createAt!);
-    return dateB.getTime() - dateA.getTime()
-  })
+  const sortedPosts =
+    posts &&
+    posts.slice().sort((a: Post, b: Post) => {
+      const dateA = new Date(a.createAt!);
+      const dateB = new Date(b.createAt!);
+      return dateB.getTime() - dateA.getTime();
+    });
   return (
     <S.PostList>
       {posts &&

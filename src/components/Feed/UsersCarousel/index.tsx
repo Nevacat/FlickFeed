@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import { getUsers, getUserData } from '../../../api/data';
 import MultiCarousel from '../../MultiCarousel';
 import { PostAuthor } from '../../../interface/post';
+import Loading from '../../Common/Loading';
 function UsersCarousel() {
   const {
     isLoading,
@@ -20,7 +21,7 @@ function UsersCarousel() {
     error: userDataError,
   } = useQuery('usersData', getUserData);
   if (isLoading || isLoadingUserdata) {
-    return <div>로딩중...</div>;
+    return <Loading />;
   }
 
   const userList = users.map((user: PostAuthor) => {
