@@ -16,7 +16,7 @@ PW: test1234<br>
 |:--:|:--:|:--:|:--:|
 | <img src="https://avatars.githubusercontent.com/u/110139098?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/117172983?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/92071025?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/21377593?v=4" width=200> |
 | [박희수](https://github.com/Nevacat) | [이혜원](https://github.com/Hana-Korea)  |   [표승연](https://github.com/pyozz)                     | [이희서](https://github.com/hlee686)   |
-| 백엔드 서버<br/>게시물 작성 페이지 |  피드 페이지  | 프로필 페이지  |  로그인 페이지<br>회원가입 페이지 |
+| 백엔드 서버<br/>게시물 작성 페이지 |  피드 페이지<br>좋아요<br>댓글<br>캐러셀  | 프로필 페이지<br>레이아웃<br>로그아웃<br>로딩  |  로그인 페이지<br>회원가입 페이지 |
 
 ## 사이트 설명
 ### 로그인 화면
