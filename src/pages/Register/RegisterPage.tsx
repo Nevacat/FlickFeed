@@ -12,11 +12,11 @@ function RegisterPage(){
       onSuccess: (data) => {
         if (data) {
           setCookie('accessToken', data.accessToken)
-          navigate("/posts")
+          navigate("/")
         }
       },
       onError: (err: AxiosError) => {
-        console.error(err);
+          console.error(err);
       },
     });
     return (
