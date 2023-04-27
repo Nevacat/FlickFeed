@@ -14,7 +14,6 @@ interface PostItemProp {
 }
 
 function PostItem({ post }: PostItemProp) {
-  console.log(post);
   const { setIsCommentModal, setCommentTargetPostId } = useFeed();
   const {
     data: postContents,

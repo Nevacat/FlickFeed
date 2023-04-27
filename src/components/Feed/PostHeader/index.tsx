@@ -10,7 +10,6 @@ interface PostHeaderProps {
 }
 
 function PostHeader({ post }: PostHeaderProps) {
-  console.log(post);
   const { setIsDeleteModal, setDeleteTargetPostId } = useFeed();
   return (
     <S.PostHeader>

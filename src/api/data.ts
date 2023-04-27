@@ -42,7 +42,6 @@ export const getUserData = async () => {
     baseURL:
       'http://myserver-env.eba-aeguaeip.ap-northeast-2.elasticbeanstalk.com',
   });
-
   const userData = res.data.users.map((user: UserDetail) => ({
     id: user.id,
     username: user.username,

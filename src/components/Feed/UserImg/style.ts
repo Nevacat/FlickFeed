@@ -21,5 +21,7 @@ export const UserImg = styled.div<UserImgProps>`
       ? css`
           background-image: url(${url});
         `
-      : css``}
+      : css`
+          background-image: url('https://www.refugee-action.org.uk/wp-content/uploads/2016/10/anonymous-user.png');
+        `}
 `;
