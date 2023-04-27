@@ -10,6 +10,13 @@ ID: test1@naver.com<br>
 PW: test1234<br>
 **(회원가입을 이용하여 쓰셔도 무방합니다.!)**
 
+## 프로젝트 멤버 및 작업 목록
+
+| <center>박희수<조장></center> | <center>이혜원</center>|<center>표승연</center>  | <center>이희서</center> |
+|:--:|:--:|:--:|:--:|
+| <img src="https://avatars.githubusercontent.com/u/110139098?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/117172983?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/92071025?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/21377593?v=4" width=200> |
+| [박희수](https://github.com/Nevacat) | [이혜원](https://github.com/Hana-Korea)  |   [표승연](https://github.com/pyozz)                     | [이희서](https://github.com/hlee686)   |
+| 백엔드 서버<br/>게시물 작성 페이지 |  피드 페이지  | 프로필 페이지  |  로그인 페이지<br>회원가입 페이지 |
 
 ## 사이트 설명
 ### 로그인 화면
@@ -44,14 +51,6 @@ PW: test1234<br>
 
 ![스크린샷 2023-04-27 224020](https://user-images.githubusercontent.com/110139098/234886782-50274f91-305c-41e6-931f-821ce23764a8.png)
 
-
-## 프로젝트 멤버 및 작업 목록
-
-| <center>박희수<조장></center> | <center>이혜원</center>|<center>표승연</center>  | <center>이희서</center> |
-|:--:|:--:|:--:|:--:|
-| <img src="https://avatars.githubusercontent.com/u/110139098?v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/117172983?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/92071025?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/21377593?v=4" width=200> |
-| [박희수](https://github.com/Nevacat) | [이혜원](https://github.com/Hana-Korea)  |   [표승연](https://github.com/pyozz)                     | [이희서](https://github.com/hlee686)   |
-| 백엔드 서버<br/>게시물 작성 페이지 |  피드 페이지  | 프로필 페이지  |  로그인 페이지<br>회원가입 페이지 |
 
 ### 프로젝트의 기능구현 사항
 
