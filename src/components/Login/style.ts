@@ -43,7 +43,8 @@ export const LoginStyle = styled.button`
   padding: ${padding};
   display: ${display};
   background-color: ${theme.color.purple};
-  color: black;
+  color: ${theme.color.white};
+  font-weight:${theme.fontWeight.bold};
   border:none;
 `;
 

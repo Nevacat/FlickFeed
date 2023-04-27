@@ -62,7 +62,8 @@ export const SignupStyle = styled.button`
     border-radius:${borderRadius};
     display: ${display};
     background-color: ${theme.color.purple};
-    color: black;
+    color:${theme.color.white};
+    font-weight: ${theme.fontWeight.bold};
     border:none;
 `
 
