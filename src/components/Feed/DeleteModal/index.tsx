@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import * as S from './style';
-import { deletePost } from '../../../api/data';
+import { deletePost, getMyPost, getPost } from '../../../api/data';
 import { useFeed } from '../../../context/FeedContext';
-
+import { Post } from '../../../interface/post';
 function DeleteModal() {
   const { isDeleteModal, setIsDeleteModal, deleteTargetPostId } = useFeed();
   const refresh = () => window.location.reload();
@@ -15,12 +15,27 @@ function DeleteModal() {
       console.error('error', { res });
     },
   });
+  const { data: myPost, isLoading: isMyPostLoading } = useQuery(
+    'myPost',
+    getMyPost,
+    {
+      select: (posts) => {
+        return posts.map((post: Post) => post.id);
+      },
+    }
+  );
+
   const handleDeletePost = (postId: string) => {
     sessionStorage.setItem('user', JSON.stringify({ id: postId }));
-    mutate(postId);
-    alert('삭제되었습니다');
-    refresh();
+    if (myPost.some((post: string) => post === postId)) {
+      mutate(postId);
+      alert('삭제되었습니다');
+      refresh();
+    } else {
+      alert('자신이 작성한 게시물만 삭제할 수 있습니다');
+    }
   };
+
   return (
     <S.DeleteModalOverlay>
       <S.DeleteModal toggle={isDeleteModal}>

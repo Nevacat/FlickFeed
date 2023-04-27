@@ -50,6 +50,11 @@ export const getUserData = async () => {
   return userData;
 };
 
+export const getMyPost = async () => {
+  const res = await axiosInstance.get('/posts/me');
+  return res.data;
+};
+
 export const getPost = async (postId: string) => {
   const res = await axios.get(`/posts/${postId}`, {
     baseURL:
