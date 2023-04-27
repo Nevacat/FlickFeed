@@ -6,6 +6,7 @@ export interface Post {
   comments?: PostComment[];
   likes: PostLikes[];
   author: Author;
+  createAt?: string;
 }
 export interface Author {
   email: string;
